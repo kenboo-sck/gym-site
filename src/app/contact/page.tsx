@@ -1,4 +1,6 @@
 "use client";
+import { db } from "@/lib/firebase"; 
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -84,9 +86,24 @@ export default function ContactPage() {
     window.scrollTo(0, 0);
   };
 
-  const handleFinalSubmit = () => {
-    alert("お問い合わせを送信しました。ありがとうございます。");
-    // ここに実際の送信処理（Firebase等）を記述します
+  const handleFinalSubmit = async () => {
+    try {
+      // Firebaseにデータを保存
+      await addDoc(collection(db, "inquiries"), {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        createdAt: serverTimestamp(),
+      });
+
+      alert("お問い合わせを送信しました。ありがとうございました！");
+      setIsConfirm(false);
+      // 入力フォームをクリア
+      setFormData({ name: "", email: "", emailConfirm: "", zip: "", address: "", message: "" });
+    } catch (error) {
+      console.error("送信エラー:", error);
+      alert("送信に失敗しました。もう一度お試しください。");
+    }
   };
 
   return (
