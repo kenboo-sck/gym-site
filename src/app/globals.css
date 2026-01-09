@@ -81,14 +81,12 @@ body {
   margin: 1rem 0;
 }
 
-/* reCAPTCHAのバッジを小さくする設定 */
+/* reCAPTCHAロゴと文字をセットで小さくし、位置を調整する */
 .grecaptcha-badge { 
-  transform: scale(0.6) !important; /* 0.6倍に縮小（お好みで0.5〜0.8で調整してください） */
-  transform-origin: bottom right !important; /* 右下を基準にして縮小 */
-  transition: all 0.3s ease; /* マウスを乗せた時の動きを滑らかに */
-}
-
-/* マウスを乗せた時だけ少し大きく見せる（親切設計） */
-.grecaptcha-badge:hover {
-  transform: scale(0.8) !important;
+  transform: scale(0.65) !important; /* 少しサイズを戻して視認性を確保 */
+  transform-origin: bottom right !important; 
+  right: 5px !important; /* 右側に寄りすぎないよう調整 */
+  bottom: 5px !important; /* 下側に寄りすぎないよう調整 */
+  display: block !important; /* 強制的に表示させる */
+  overflow: visible !important; /* 中身が切れないようにする */
 }
