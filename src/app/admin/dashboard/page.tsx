@@ -449,12 +449,12 @@ export default function AdminDashboard() {
                 ))}
               </select>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs text-gray-400 mb-2">開始時間</label>
                 <input
                   type="time"
-                  className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full bg-gray-800 border-none px-2 py-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                   value={startTime}
                   onChange={(e) => setStartTime(e.target.value)}
                   required
@@ -464,7 +464,7 @@ export default function AdminDashboard() {
                 <label className="block text-xs text-gray-400 mb-2">終了時間</label>
                 <input
                   type="time"
-                  className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full bg-gray-800 border-none px-2 py-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   required
@@ -476,8 +476,8 @@ export default function AdminDashboard() {
           <div className="space-y-4">
             <div>
               <label className="block text-xs text-gray-400 mb-2">ステータス</label>
-              <select
-                className="w-full bg-gray-800 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+              <select 
+                className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
               >
