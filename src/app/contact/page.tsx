@@ -2,7 +2,7 @@
 import { db } from "@/lib/firebase"; 
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useState } from 'react';
-import Link from 'next/link';
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // 型定義を明示的に追加
 interface FormData {
@@ -21,7 +21,10 @@ interface FormData {
   message: string;
 }
 
-export default function ContactPage() {
+// フォームコンポーネント本体
+function ContactFormContent() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   // 初期値の定義(型を明示)
   const [formData, setFormData] = useState<FormData>({
     subject: '無料体験申込み',
@@ -41,6 +44,7 @@ export default function ContactPage() {
 
   const [emailError, setEmailError] = useState("");
   const [isConfirm, setIsConfirm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // 郵便番号から住所を検索する関数
   const fetchAddress = async (zipCode: string) => {
@@ -102,8 +106,45 @@ export default function ContactPage() {
   };
 
   const handleFinalSubmit = async () => {
+  console.log('=== handleFinalSubmit 開始 ===');
+  console.log('executeRecaptcha:', executeRecaptcha);
+  
+  if (!executeRecaptcha) {
+    alert('reCAPTCHAの準備ができていません。もう一度お試しください。');
+    return;
+  }
+
+    setIsSubmitting(true);
+
     try {
-      // 1. Firebaseに全ての項目を保存
+      // 1. reCAPTCHAトークンを取得
+      const recaptchaToken = await executeRecaptcha('contact_form');
+
+      // 2. バックエンドでreCAPTCHA検証
+      const verifyResponse = await fetch('/api/verify-recaptcha', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token: recaptchaToken }),
+      });
+
+      const verifyResult = await verifyResponse.json();
+
+      if (!verifyResult.success) {
+        alert('セキュリティチェックに失敗しました。もう一度お試しください。');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // 3. スコアチェック（0.5以上なら人間と判定）
+      if (verifyResult.score < 0.5) {
+        alert('不正なリクエストが検出されました。');
+        setIsSubmitting(false);
+        return;
+      }
+
+      // 4. Firebaseに保存
       await addDoc(collection(db, "inquiries"), {
         subject: formData.subject,
         experience: formData.experience,
@@ -115,13 +156,14 @@ export default function ContactPage() {
         zip: formData.zip,
         address: `${formData.prefecture}${formData.city}${formData.address}`,
         message: formData.message,
+        recaptchaScore: verifyResult.score, // スコアも保存
         createdAt: serverTimestamp(),
       });
 
       alert("お問い合わせを送信しました。ありがとうございました!");
       setIsConfirm(false);
       
-      // 2. 入力フォームを初期値にリセット
+      // 5. 入力フォームを初期値にリセット
       setFormData({
         subject: '無料体験申込み',
         experience: '無し',
@@ -140,13 +182,13 @@ export default function ContactPage() {
     } catch (error) {
       console.error("送信エラー:", error);
       alert("送信に失敗しました。もう一度お試しください。");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
-
   return (
     <div className="pt-40 pb-20 font-[family-name:var(--font-oswald)]">
-      {/* デザイン部分は変更なしのため維持 */}
       <section className="relative max-w-7xl mx-auto px-6 mb-16 overflow-hidden">
         <div className="absolute top-1/2 -translate-y-1/2 -left-10 select-none pointer-events-none z-0 opacity-[0.03] whitespace-nowrap">
           <span className="text-[12rem] md:text-[22rem] font-black italic leading-none uppercase tracking-tighter">MESSAGE</span>
@@ -294,17 +336,49 @@ export default function ContactPage() {
               </div>
 
               <div className="flex flex-col md:flex-row justify-center gap-6 pt-6">
-                <button onClick={handleBack} className="bg-gray-200 text-gray-600 px-12 py-5 font-black italic uppercase text-xl hover:bg-gray-300 transition-all">
+                <button 
+                  onClick={handleBack} 
+                  disabled={isSubmitting}
+                  className="bg-gray-200 text-gray-600 px-12 py-5 font-black italic uppercase text-xl hover:bg-gray-300 transition-all disabled:opacity-50"
+                >
                   ← 修正する
                 </button>
-                <button onClick={handleFinalSubmit} className="bg-orange-600 text-white px-12 py-5 hover:bg-black transition-all border-r-4 border-orange-400 shadow-xl font-black italic uppercase text-xl">
-                  この内容で送信する →
+                <button 
+                  onClick={handleFinalSubmit} 
+                  disabled={isSubmitting}
+                  className="bg-orange-600 text-white px-12 py-5 hover:bg-black transition-all border-r-4 border-orange-400 shadow-xl font-black italic uppercase text-xl disabled:opacity-50"
+                >
+                  {isSubmitting ? '送信中...' : 'この内容で送信する →'}
                 </button>
               </div>
             </div>
           )}
         </div>
       </div>
+
+      {/* reCAPTCHAバッジ（右下に表示） */}
+      <div className="fixed bottom-4 right-4 text-xs text-gray-400">
+        This site is protected by reCAPTCHA
+      </div>
     </div>
+  );
+}
+
+// reCAPTCHAプロバイダーでラップ
+export default function ContactPage() {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  if (!siteKey) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-red-500">reCAPTCHAの設定が見つかりません。</p>
+      </div>
+    );
+  }
+
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey={siteKey}>
+      <ContactFormContent />
+    </GoogleReCaptchaProvider>
   );
 }
