@@ -86,13 +86,13 @@ const sortedData = data.sort((a: any, b: any) => {
   return (
     <div className="space-y-4">
       {/* フィルターUI */}
-      <div className="flex gap-4 items-center p-4 bg-gray-50 rounded-2xl border border-gray-100">
-        <div className="flex items-center gap-2">
-          <label className="text-xs font-bold text-gray-600">カテゴリ:</label>
+      <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center p-4 bg-gray-50 border border-gray-100">
+        <div className="flex items-center gap-2 flex-1">
+          <label className="text-xs font-bold text-gray-600 shrink-0">カテゴリ:</label>
           <select 
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-orange-500"
+            className="flex-1 px-3 py-2 bg-white border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-orange-500"
           >
             <option value="ALL">すべて</option>
             <option value="INFO">お知らせ</option>
@@ -102,12 +102,12 @@ const sortedData = data.sort((a: any, b: any) => {
           </select>
         </div>
         
-        <div className="flex items-center gap-2">
-          <label className="text-xs font-bold text-gray-600">ステータス:</label>
+        <div className="flex items-center gap-2 flex-1">
+          <label className="text-xs font-bold text-gray-600 shrink-0">ステータス:</label>
           <select 
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-orange-500"
+            className="flex-1 px-3 py-2 bg-white border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-orange-500"
           >
             <option value="ALL">すべて</option>
             <option value="published">公開</option>
@@ -115,7 +115,7 @@ const sortedData = data.sort((a: any, b: any) => {
           </select>
         </div>
         
-        <div className="ml-auto text-sm text-gray-500">
+        <div className="sm:ml-auto text-sm text-gray-500 text-right">
           全{filteredNews.length}件
         </div>
       </div>
@@ -126,15 +126,15 @@ const sortedData = data.sort((a: any, b: any) => {
       ) : (
         <>
           {currentItems.map((item) => (
-            <div key={item.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl border border-gray-100">
-              <div className="flex items-center gap-4 flex-1">
+            <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-gray-50 border border-gray-100 gap-4">
+              <div className="flex items-center gap-4 w-full sm:w-auto">
                 {item.image && (
-                  <Image src={item.image} alt={item.title} width={60} height={60} className="rounded-xl object-cover" unoptimized />
+                  <Image src={item.image} alt={item.title} width={60} height={60} className="object-cover flex-shrink-0" unoptimized />
                 )}
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="font-bold text-sm">{item.title}</div>
-                    <span className={`text-[10px] px-2 py-1 rounded-full font-bold ${
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    <div className="font-bold text-sm truncate">{item.title}</div>
+                    <span className={`text-[10px] px-2 py-0.5 font-bold ${
                       item.status === 'published' 
                         ? 'bg-green-100 text-green-700' 
                         : 'bg-yellow-100 text-yellow-700'
@@ -143,23 +143,23 @@ const sortedData = data.sort((a: any, b: any) => {
                     </span>
                   </div>
                   <div className="text-xs text-gray-400">
-                    <span className="inline-block px-2 py-0.5 bg-orange-100 text-orange-600 rounded mr-2">
+                    <span className="inline-block px-2 py-0.5 bg-orange-100 text-orange-600 mr-2">
                       {getCategoryLabel(item.category)}
                     </span>
                     {item.date}
                   </div>
                 </div>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 w-full sm:w-auto justify-end">
                 <Link 
                   href={`/admin/edit/${item.id}`}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-blue-600 transition-all"
+                  className="flex-1 sm:flex-none text-center bg-blue-500 text-white px-4 py-2 font-bold text-xs hover:bg-blue-600 transition-all"
                 >
                   編集
                 </Link>
                 <button 
                   onClick={() => handleDelete(item.id)} 
-                  className="bg-red-500 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-red-600 transition-all"
+                  className="flex-1 sm:flex-none text-center bg-red-500 text-white px-4 py-2 font-bold text-xs hover:bg-red-600 transition-all"
                 >
                   削除
                 </button>
@@ -169,11 +169,11 @@ const sortedData = data.sort((a: any, b: any) => {
 
           {/* ページネーション */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
               <button
                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                 disabled={currentPage === 1}
-                className={`px-4 py-2 rounded-lg font-bold text-sm transition-all ${
+                className={`px-4 py-2 font-bold text-sm transition-all ${
                   currentPage === 1
                     ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     : 'bg-orange-600 text-white hover:bg-orange-700'
@@ -187,7 +187,7 @@ const sortedData = data.sort((a: any, b: any) => {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`w-10 h-10 rounded-lg font-bold text-sm transition-all ${
+                    className={`w-10 h-10 font-bold text-sm transition-all ${
                       currentPage === page
                         ? 'bg-orange-600 text-white'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -201,7 +201,7 @@ const sortedData = data.sort((a: any, b: any) => {
               <button
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
                 disabled={currentPage === totalPages}
-                className={`px-4 py-2 rounded-lg font-bold text-sm transition-all ${
+                className={`px-4 py-2 font-bold text-sm transition-all ${
                   currentPage === totalPages
                     ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     : 'bg-orange-600 text-white hover:bg-orange-700'
@@ -367,21 +367,21 @@ export default function AdminDashboard() {
     <div className="pt-32 px-6 max-w-6xl mx-auto pb-20 font-[family-name:var(--font-oswald)]">
       
       {/* ヘッダー */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8">
         <div>
-          <h1 className="text-3xl font-black italic uppercase">管理ダッシュボード</h1>
+          <h1 className="text-2xl md:text-3xl font-black italic uppercase">管理ダッシュボード</h1>
           <p className="text-sm text-gray-500 mt-2">スケジュールとニュースを管理できます</p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-3 w-full sm:w-auto">
           <Link 
             href="/admin/create" 
-            className="bg-orange-600 text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-black transition-all italic uppercase"
+            className="flex-1 sm:flex-none text-center bg-orange-600 text-white px-6 py-3 font-bold text-sm hover:bg-black transition-all italic uppercase"
           >
             + ニュース作成
           </Link>
           <button 
             onClick={() => auth.signOut()}
-            className="text-gray-400 hover:text-black font-bold text-sm italic uppercase"
+            className="flex-1 sm:flex-none text-center border border-gray-200 text-gray-400 hover:text-black font-bold text-sm italic uppercase px-6 py-3"
           >
             ログアウト
           </button>
@@ -389,7 +389,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* スケジュール追加・編集フォーム */}
-      <form onSubmit={editingId ? handleUpdate : handleSubmit} className="bg-gray-900 text-white p-8 rounded-3xl mb-12 shadow-2xl border border-gray-800">
+      <form onSubmit={editingId ? handleUpdate : handleSubmit} className="bg-gray-900 text-white p-6 md:p-8 mb-12 shadow-2xl border border-gray-800">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl font-black italic uppercase text-orange-500">
             {editingId ? "スケジュール編集" : "スケジュール追加"}
@@ -417,7 +417,7 @@ export default function AdminDashboard() {
               <input
                 type="text"
                 placeholder="例: BJJクラス、キックボクシング"
-                className="w-full bg-gray-800 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+                className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
@@ -428,7 +428,7 @@ export default function AdminDashboard() {
               <input
                 type="text"
                 placeholder="例: 山田太郎"
-                className="w-full bg-gray-800 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+                className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                 value={coach}
                 onChange={(e) => setCoach(e.target.value)}
               />
@@ -438,8 +438,8 @@ export default function AdminDashboard() {
           <div className="space-y-4">
             <div>
               <label className="block text-xs text-gray-400 mb-2">曜日</label>
-              <select 
-                className="w-full bg-gray-800 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+              <select
+                className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                 value={dayOfWeek}
                 onChange={(e) => setDayOfWeek(Number(e.target.value))}
                 required
@@ -454,7 +454,7 @@ export default function AdminDashboard() {
                 <label className="block text-xs text-gray-400 mb-2">開始時間</label>
                 <input
                   type="time"
-                  className="w-full bg-gray-800 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                   value={startTime}
                   onChange={(e) => setStartTime(e.target.value)}
                   required
@@ -464,7 +464,7 @@ export default function AdminDashboard() {
                 <label className="block text-xs text-gray-400 mb-2">終了時間</label>
                 <input
                   type="time"
-                  className="w-full bg-gray-800 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
+                  className="w-full bg-gray-800 border-none p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   required
@@ -476,7 +476,7 @@ export default function AdminDashboard() {
           <div className="space-y-4">
             <div>
               <label className="block text-xs text-gray-400 mb-2">ステータス</label>
-              <select 
+              <select
                 className="w-full bg-gray-800 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-orange-500 outline-none"
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
@@ -490,7 +490,7 @@ export default function AdminDashboard() {
               <label className="block text-xs text-gray-400 mb-2">カラー（カレンダー表示用）</label>
               <input
                 type="color"
-                className="w-full h-12 bg-gray-800 border-none rounded-xl cursor-pointer"
+                className="w-full h-12 bg-gray-800 border-none cursor-pointer"
                 value={color}
                 onChange={(e) => setColor(e.target.value)}
               />
@@ -500,14 +500,14 @@ export default function AdminDashboard() {
         
         <button 
           disabled={loading}
-          className="w-full mt-8 bg-orange-600 hover:bg-orange-500 text-white font-black italic py-4 rounded-xl transition-all uppercase tracking-widest"
+          className="w-full mt-8 bg-orange-600 hover:bg-orange-500 text-white font-black italic py-4 transition-all uppercase tracking-widest"
         >
           {loading ? "処理中..." : (editingId ? "スケジュールを更新" : "スケジュールを追加")}
         </button>
       </form>
 
       {/* 既存スケジュール一覧 */}
-      <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 mb-8">
+      <div className="bg-white p-6 md:p-8 shadow-xl border border-gray-100 mb-8">
         <button
           type="button"
           onClick={() => setIsScheduleOpen(!isScheduleOpen)}
@@ -528,9 +528,9 @@ export default function AdminDashboard() {
               <p className="text-center py-8 text-gray-400 italic">スケジュールがありません</p>
             ) : (
               schedules.map((item) => (
-                <div key={item.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl border border-gray-100 hover:bg-gray-100 transition-colors">
-                  <div className="flex items-center gap-4">
-                    <div style={{ backgroundColor: item.color }} className="w-3 h-3 rounded-full"></div>
+                <div key={item.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-gray-50 border border-gray-100 hover:bg-gray-100 transition-colors gap-4">
+                  <div className="flex items-center gap-4 w-full sm:w-auto">
+                    <div style={{ backgroundColor: item.color }} className="w-3 h-3 flex-shrink-0"></div>
                     <div>
                       <div className="font-bold text-sm">{item.title}</div>
                       <div className="text-xs text-gray-400">
@@ -538,16 +538,16 @@ export default function AdminDashboard() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 w-full sm:w-auto justify-end">
                     <button 
                       onClick={() => handleEdit(item)} 
-                      className="bg-blue-500 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-blue-600 transition-all"
+                      className="flex-1 sm:flex-none bg-blue-500 text-white px-4 py-2 font-bold text-xs hover:bg-blue-600 transition-all"
                     >
                       編集
                     </button>
                     <button 
                       onClick={() => handleDelete(item.id)} 
-                      className="bg-red-500 text-white px-4 py-2 rounded-xl font-bold text-xs hover:bg-red-600 transition-all"
+                      className="flex-1 sm:flex-none bg-red-500 text-white px-4 py-2 font-bold text-xs hover:bg-red-600 transition-all"
                     >
                       削除
                     </button>
@@ -560,7 +560,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* ニュース管理 */}
-      <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+      <div className="bg-white p-6 md:p-8 shadow-xl border border-gray-100">
         <div className="mb-6">
           <h2 className="text-xl font-black italic uppercase">ニュース管理</h2>
           <p className="text-xs text-gray-500 mt-2">公開済みのニュース記事を編集・削除できます。新しい記事は上部の「+ ニュース作成」ボタンから作成してください。</p>
