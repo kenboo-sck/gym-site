@@ -80,3 +80,15 @@ body {
   border-radius: 0.5rem;
   margin: 1rem 0;
 }
+
+/* reCAPTCHAのバッジを小さくする設定 */
+.grecaptcha-badge { 
+  transform: scale(0.6) !important; /* 0.6倍に縮小（お好みで0.5〜0.8で調整してください） */
+  transform-origin: bottom right !important; /* 右下を基準にして縮小 */
+  transition: all 0.3s ease; /* マウスを乗せた時の動きを滑らかに */
+}
+
+/* マウスを乗せた時だけ少し大きく見せる（親切設計） */
+.grecaptcha-badge:hover {
+  transform: scale(0.8) !important;
+}
