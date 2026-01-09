@@ -86,7 +86,7 @@ export default function ContactPage() {
 
   const handleFinalSubmit = async () => {
     try {
-      // Firebaseにデータを保存
+      // 1. Firebaseに全ての項目を保存（ここを修正）
       await addDoc(collection(db, "inquiries"), {
         subject: formData.subject,
         experience: formData.experience,
@@ -95,6 +95,7 @@ export default function ContactPage() {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
+        zip: formData.zip,
         address: `${formData.prefecture}${formData.city}${formData.address}`,
         message: formData.message,
         createdAt: serverTimestamp(),
@@ -103,7 +104,7 @@ export default function ContactPage() {
       alert("お問い合わせを送信しました。ありがとうございました！");
       setIsConfirm(false);
       
-      // 入力フォームを初期値にリセット（ここがエラーの原因でした）
+      // 2. 入力フォームを初期値にリセット（ここはOKなはず）
       setFormData({
         subject: '無料体験申込み',
         experience: '無し',
@@ -124,7 +125,7 @@ export default function ContactPage() {
       alert("送信に失敗しました。もう一度お試しください。");
     }
   };
-  
+
 
   return (
     <div className="pt-40 pb-20 font-[family-name:var(--font-oswald)]">
