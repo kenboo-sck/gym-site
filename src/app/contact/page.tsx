@@ -4,9 +4,26 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useState } from 'react';
 import Link from 'next/link';
 
+// 型定義を明示的に追加
+interface FormData {
+  subject: string;
+  experience: string;
+  contactMethod: string;
+  gender: string;
+  name: string;
+  email: string;
+  emailConfirm: string;
+  phone: string;
+  zip: string;
+  prefecture: string;
+  city: string;
+  address: string;
+  message: string;
+}
+
 export default function ContactPage() {
-  // 初期値の定義
-  const [formData, setFormData] = useState({
+  // 初期値の定義(型を明示)
+  const [formData, setFormData] = useState<FormData>({
     subject: '無料体験申込み',
     experience: '無し',
     contactMethod: 'メール',
@@ -86,7 +103,7 @@ export default function ContactPage() {
 
   const handleFinalSubmit = async () => {
     try {
-      // 1. Firebaseに全ての項目を保存（ここを修正）
+      // 1. Firebaseに全ての項目を保存
       await addDoc(collection(db, "inquiries"), {
         subject: formData.subject,
         experience: formData.experience,
@@ -101,10 +118,10 @@ export default function ContactPage() {
         createdAt: serverTimestamp(),
       });
 
-      alert("お問い合わせを送信しました。ありがとうございました！");
+      alert("お問い合わせを送信しました。ありがとうございました!");
       setIsConfirm(false);
       
-      // 2. 入力フォームを初期値にリセット（ここはOKなはず）
+      // 2. 入力フォームを初期値にリセット
       setFormData({
         subject: '無料体験申込み',
         experience: '無し',
