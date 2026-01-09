@@ -184,11 +184,11 @@ export default function Footer() {
       {showButton && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-8 right-8 bg-orange-600 text-white w-14 h-14 flex items-center justify-center font-black hover:bg-black transition-all shadow-2xl shadow-orange-600/40 z-40 hover:scale-110 active:scale-95 group animate-fade-in"
+          className="fixed bottom-4 right-4 md:bottom-8 md:right-8 bg-orange-600/70 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-14 md:h-14 flex items-center justify-center font-black hover:bg-black transition-all shadow-2xl shadow-orange-600/40 z-40 hover:scale-110 active:scale-95 group animate-fade-in"
           aria-label="トップへ戻る"
         >
           <svg 
-            className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-300" 
+            className="w-4 h-4 md:w-6 md:h-6 group-hover:-translate-y-1 transition-transform duration-300" 
             fill="none" 
             stroke="currentColor" 
             strokeWidth="3"
