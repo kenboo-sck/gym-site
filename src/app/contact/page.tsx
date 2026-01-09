@@ -124,6 +124,7 @@ export default function ContactPage() {
       alert("送信に失敗しました。もう一度お試しください。");
     }
   };
+  
 
   return (
     <div className="pt-40 pb-20 font-[family-name:var(--font-oswald)]">
