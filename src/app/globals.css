@@ -1,0 +1,82 @@
+@import "tailwindcss";
+/* @plugin "@tailwindcss/typography"; */
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* ダークモード設定（一旦シンプルにします） */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Quill Editor Styles */
+.ql-toolbar.ql-snow {
+  border: none !important;
+  border-bottom: 1px solid #f3f4f6 !important;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.ql-container.ql-snow {
+  border: none !important;
+  min-height: 350px;
+  font-size: 16px;
+}
+.ql-editor {
+  min-height: 350px;
+}
+
+/* Tiptap Editor スタイル */
+.ProseMirror {
+  min-height: 400px;
+  padding: 1rem;
+  outline: none;
+}
+
+.ProseMirror p {
+  margin: 0.5rem 0;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem;
+}
+
+.ProseMirror h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.ProseMirror ul, .ProseMirror ol {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid #ea580c;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
