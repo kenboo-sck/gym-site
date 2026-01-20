@@ -15,6 +15,10 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   title: "G-STYLE GYM",
   description: "あなたの理想を形にするジム",
+  icons: {
+    icon: "/afgoh_icon.png",
+    apple: "/afgoh_icon.png",
+  },
 };
 
 export default function RootLayout({
