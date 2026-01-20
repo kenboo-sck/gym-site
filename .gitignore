@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# firebase functions
+functions/node_modules/
+functions/lib/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
