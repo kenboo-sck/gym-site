@@ -41,14 +41,14 @@ export default function Footer() {
     <footer className="bg-gradient-to-b from-gray-900 to-black text-white font-[family-name:var(--font-oswald)]">
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-12">
         <div className="grid md:grid-cols-4 gap-12 mb-16">
-          
+
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-6">
-              <Image 
-                src="/logo_t.svg" 
+              <Image
+                src="/logo_t.svg"
                 alt="ALMA FIGHT GYM"
-                width={160} 
-                height={36} 
+                width={160}
+                height={36}
                 className="object-contain brightness-0 invert"
               />
             </Link>
@@ -57,8 +57,8 @@ export default function Footer() {
               初心者からプロ志望まで、本気で変わるなら今。<br />
               まずは体験からスタート！
             </p>
-            <Link 
-              href="/reservation" 
+            <Link
+              href="/reservation"
               className="inline-block bg-orange-600 text-white px-8 py-4 font-black italic text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl shadow-orange-900/40"
             >
               体験予約 →
@@ -72,8 +72,8 @@ export default function Footer() {
             </h3>
             <div className="grid grid-cols-2 gap-x-12 gap-y-5">
               {navItems.map((item) => (
-                <Link 
-                  key={item.href} 
+                <Link
+                  key={item.href}
                   href={item.href}
                   className="group flex flex-col pb-3 border-b border-gray-700 hover:border-orange-600 transition-all"
                 >
@@ -112,7 +112,8 @@ export default function Footer() {
                 <p className="text-gray-300 leading-relaxed">
                   平日 17:00 - 22:00<br />
                   土曜 10:00 - 14:00<br />
-                  <span className="text-gray-500">定休日：日曜</span>
+                  <span className="text-gray-500">定休日：日曜・祝日</span><br />
+                  <span className="text-[10px] text-gray-500 italic">（夏季、年末年始の長期休暇あり）</span>
                 </p>
               </div>
             </div>
@@ -130,8 +131,8 @@ export default function Footer() {
               <p className="font-bold text-white">株式会社マーシャルワールドジャパン</p>
               <p>〒541-0051 大阪市中央区備後町3-1-6 アルファビル2階</p>
               <p>TEL : 06-4256-2921</p>
-              <Link 
-                href="https://your-company-site.com" 
+              <Link
+                href="https://your-company-site.com"
                 target="_blank"
                 className="inline-block text-orange-500 hover:text-orange-400 transition-colors mt-2 font-bold"
               >
@@ -187,10 +188,10 @@ export default function Footer() {
           className="fixed bottom-4 right-4 md:bottom-8 md:right-8 bg-orange-600/70 backdrop-blur-md border border-white/20 text-white w-10 h-10 md:w-14 md:h-14 flex items-center justify-center font-black hover:bg-black transition-all shadow-2xl shadow-orange-600/40 z-40 hover:scale-110 active:scale-95 group animate-fade-in"
           aria-label="トップへ戻る"
         >
-          <svg 
-            className="w-4 h-4 md:w-6 md:h-6 group-hover:-translate-y-1 transition-transform duration-300" 
-            fill="none" 
-            stroke="currentColor" 
+          <svg
+            className="w-4 h-4 md:w-6 md:h-6 group-hover:-translate-y-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
             strokeWidth="3"
             viewBox="0 0 24 24"
           >

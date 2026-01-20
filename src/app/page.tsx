@@ -11,23 +11,23 @@ export default function Home() {
 
   useEffect(() => {
     const fetchNews = async () => {
-  try {
-    const q = query(
-      collection(db, "news"),
-      where("status", "==", "published")
-    );
-    const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map(doc => ({
-  id: doc.id,
-  ...doc.data(),
-})) as any[];
-// クライアント側で日付順にソートして最新4件を取得
-const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).slice(0, 4);
-    setNewsList(sortedData);
-  } catch (error) {
-    console.error("Error fetching news:", error);
-  }
-};
+      try {
+        const q = query(
+          collection(db, "news"),
+          where("status", "==", "published")
+        );
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as any[];
+        // クライアント側で日付順にソートして最新4件を取得
+        const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).slice(0, 4);
+        setNewsList(sortedData);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      }
+    };
     fetchNews();
   }, []);
 
@@ -47,7 +47,7 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-black text-white">
         {/* 背景画像 */}
         <Image
-          src="/hm-t-hero-1.png" 
+          src="/hm-t-hero-1.png"
           alt="トレーニングジムの風景"
           fill
           priority
@@ -55,7 +55,7 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
         />
         {/* オーバーレイを濃くして視認性を向上 */}
         <div className="absolute inset-0 bg-black/40"></div>
-        
+
         <div className="relative z-10 text-center px-6 pt-12 md:pt-0">
           <p className="text-orange-500 font-bold tracking-[0.3em] mb-3 md:mb-6 text-xs md:text-base">
             BEGIN YOUR EVOLUTION
@@ -65,9 +65,37 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
           </h1>
           <p className="mt-4 md:mt-8 text-gray-200 max-w-xl mx-auto text-sm md:text-lg leading-relaxed">
             初心者・未経験者大歓迎。<br />本町駅すぐの本格ジムで、
-            理想の体と自信を手に入れる。<br />今なら無料体験受付中。
+            理想の体と自信を手に入れる。
           </p>
-          
+
+          {/* キャンペーンバッジ */}
+          <div className="mt-8 md:mt-10 inline-block bg-black/60 backdrop-blur-md border border-orange-600/50 p-4 md:p-6 shadow-2xl relative overflow-hidden group">
+            <div className="absolute top-0 right-0 bg-orange-600 text-white px-3 py-1 text-[10px] font-bold italic tracking-tighter uppercase">Limited Offer</div>
+            <div className="relative z-10 text-left">
+              <h3 className="text-orange-500 text-xs font-bold tracking-widest mb-3 uppercase italic">Opening Campaign</h3>
+              <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Benefit 01</span>
+                  <span className="text-xl md:text-2xl font-black italic">入会金 ¥0</span>
+                </div>
+                <div className="hidden md:block w-px h-10 bg-white/10"></div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Benefit 02</span>
+                  <span className="text-xl md:text-2xl font-black italic">道着プレゼント</span>
+                </div>
+                <div className="hidden md:block w-px h-10 bg-white/10"></div>
+                <div className="flex flex-col">
+                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-0.5">Benefit 03</span>
+                  <span className="text-xl md:text-2xl font-black italic text-orange-500">2ヶ月無料</span>
+                </div>
+              </div>
+              <div className="mt-4 flex flex-col md:flex-row md:items-center justify-between gap-2 pt-4 border-t border-white/10">
+                <p className="text-lg md:text-xl font-bold italic">先着 <span className="text-orange-500 text-2xl underline decoration-white decoration-2 underline-offset-4">30名様</span> 限定</p>
+                <p className="text-[9px] text-gray-500 font-medium leading-tight">※6ヶ月間の継続利用が条件となります。<br className="md:hidden" />6か月以内に解約の場合は実費請求となります。</p>
+              </div>
+            </div>
+          </div>
+
           <div className="mt-8 md:mt-12 flex flex-col md:flex-row gap-4 md:gap-5 justify-center items-center">
             <button className="bg-orange-600 text-white px-10 py-4 md:px-12 md:py-5 font-bold text-base md:text-lg hover:bg-orange-500 transition-all shadow-2xl shadow-orange-900/40 cursor-pointer">
               今すぐ無料で体験する
@@ -136,15 +164,15 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 border border-gray-200 overflow-hidden shadow-2xl">
             {features.map((f, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="bg-white p-6 md:p-10 relative group hover:bg-gray-50 transition-colors duration-500"
               >
                 {/* ナンバリング背景 */}
                 <span className="absolute top-2 right-2 md:top-4 md:right-6 text-8xl md:text-9xl font-black italic text-gray-50 group-hover:text-orange-50 transition-colors duration-500 leading-none">
                   0{i + 1}
                 </span>
-                
+
                 <div className="relative z-10">
                   <h3 className="text-2xl font-black italic uppercase tracking-tight text-gray-900 mb-4 md:mb-6">
                     {f.title}
@@ -162,7 +190,7 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
               <div className="absolute -right-4 -bottom-8 opacity-10 select-none pointer-events-none">
                 <span className="text-9xl font-black italic uppercase tracking-tighter text-white">JOIN</span>
               </div>
-              
+
               <div className="relative z-10">
                 <h3 className="text-3xl md:text-4xl font-black italic uppercase tracking-tighter text-white mb-4">
                   START YOUR <span className="text-black">EVOLUTION</span>
@@ -170,8 +198,8 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
                 <p className="text-orange-100 font-bold mb-6 md:mb-8 max-w-md text-sm md:text-base">
                   本物の技術、最高の環境。あなたの挑戦を私たちが全力でサポートします。まずは無料体験から。
                 </p>
-                <Link 
-                  href="/reservation" 
+                <Link
+                  href="/reservation"
                   className="inline-block bg-white text-orange-600 px-10 py-4 font-black italic uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-xl"
                 >
                   体験予約はこちらから →
@@ -203,7 +231,7 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
             <div className="group">
               <div className="relative w-full aspect-[4/3] mb-6 overflow-hidden shadow-lg">
                 <Image
-                  src="/oh-1001.jpg" 
+                  src="/oh-1001.jpg"
                   alt="Mental Game"
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
@@ -265,7 +293,7 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
             <div className="relative group overflow-hidden border border-white/10">
               <div className="relative aspect-[4/5] lg:aspect-[16/9]">
                 <Image
-                  src="/mma-hero.png" 
+                  src="/mma-hero.png"
                   alt="MMA"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-50"
@@ -286,7 +314,7 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
             <div className="relative group overflow-hidden border border-white/10">
               <div className="relative aspect-[4/5] lg:aspect-[16/9]">
                 <Image
-                  src="/kick-hero.png" 
+                  src="/kick-hero.png"
                   alt="KickBoxing"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-50"
@@ -323,8 +351,8 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {newsList.map((item) => (
-              <Link 
-                key={item.id} 
+              <Link
+                key={item.id}
                 href={`/news/${item.id}`}
                 className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1"
               >
@@ -344,10 +372,10 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
 
                 <div className="px-2 pt-2 md:px-4 md:pt-4 flex items-center gap-2 md:gap-3">
                   <span className="text-gray-400 font-bold text-[10px]">
-                    {item.date?.seconds 
+                    {item.date?.seconds
                       ? new Date(item.date.seconds * 1000).toLocaleDateString('ja-JP').replace(/\//g, '.')
-                      : typeof item.date === 'string' 
-                        ? item.date.replace(/-/g, '.') 
+                      : typeof item.date === 'string'
+                        ? item.date.replace(/-/g, '.')
                         : '---'}
                   </span>
                   <span className="bg-black text-white text-[8px] px-2 py-0.5 font-black italic uppercase tracking-tighter">
@@ -366,7 +394,7 @@ const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).sli
               </Link>
             ))}
           </div>
-          
+
           <div className="mt-12 text-center md:hidden">
             <Link href="/news" className="inline-block bg-black text-white px-8 py-3 font-bold text-sm hover:bg-orange-600 transition-all">
               VIEW ALL NEWS

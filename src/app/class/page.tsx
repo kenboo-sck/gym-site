@@ -70,6 +70,19 @@ const classCategories = [
         recommended: ["自分のペースで練習したい方", "技の復習をしたい方", "仲間と交流したい方"]
       }
     ]
+  },
+  {
+    category: "PRIVATE",
+    sub: "プライベートレッスン",
+    classes: [
+      {
+        title: "Private Lesson",
+        en: "One-on-One Coaching",
+        desc: "インストラクターと1対1で、個々のレベルや目標に合わせたオーダーメイドの指導を行います。技術の細部まで確認したい方、仕事が忙しくクラスの時間に間に合わない方、最速で上達したい方に最適です。ブラジリアン柔術、キックボクシング、MMAなど、ご希望の種目に応じて指導いたします。",
+        image: "/oh-1002.png",
+        recommended: ["最速で技術を習得したい方", "自分のペースでじっくり学びたい方", "特定の課題を解決したい方"]
+      }
+    ]
   }
 ];
 
@@ -99,14 +112,14 @@ export default function ClassPage() {
             <p className="text-gray-500 font-bold leading-relaxed text-base md:text-xl">
               未経験者からアスリートまで、すべてのレベルに対応した専門プログラム。強さを追求するだけでなく、健康維持やストレス解消など、あなたのライフスタイルに合わせた最適なプログラムを準備しております。
             </p>
-          <div className="mt-8">
-            <Link 
-              href="/schedule" 
-              className="inline-block border-b-2 border-orange-600 pb-1 font-bold italic uppercase tracking-widest text-sm text-orange-600 hover:text-black hover:border-black transition-colors"
-            >
-              Check Schedule →
-            </Link>
-          </div>
+            <div className="mt-8">
+              <Link
+                href="/schedule"
+                className="inline-block border-b-2 border-orange-600 pb-1 font-bold italic uppercase tracking-widest text-sm text-orange-600 hover:text-black hover:border-black transition-colors"
+              >
+                Check Schedule →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -139,7 +152,7 @@ export default function ClassPage() {
                       <h3 className="text-2xl font-black italic text-white uppercase">{cls.title}</h3>
                     </div>
                   </div>
-                  
+
                   <div className="w-full md:w-7/12">
                     <div className="hidden md:block mb-2">
                       <span className={`text-xs font-bold tracking-[0.3em] uppercase ${idx % 2 === 1 ? 'text-gray-500' : 'text-gray-400'}`}>
@@ -152,7 +165,7 @@ export default function ClassPage() {
                     <p className={`font-sans leading-relaxed text-base md:text-lg mb-8 ${idx % 2 === 1 ? 'text-gray-400' : 'text-gray-600'}`}>
                       {cls.desc}
                     </p>
-                    
+
                     {/* こんな方にお勧めセクション */}
                     <div className={`p-6 ${idx % 2 === 1 ? 'bg-white/5' : 'bg-gray-50'}`}>
                       <h4 className={`text-sm font-black italic uppercase mb-4 tracking-widest ${idx % 2 === 1 ? 'text-orange-500' : 'text-orange-600'}`}>
