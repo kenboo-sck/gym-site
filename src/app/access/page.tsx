@@ -73,9 +73,10 @@ export default function AccessPage() {
                   <span className="font-black italic">10:00 - 14:00</span>
                 </div>
                 <div className="flex justify-between text-gray-400">
-                  <span className="font-bold">日曜 (Sun)</span>
-                  <span className="font-black italic uppercase">Closed</span>
+                  <span className="font-bold">定休日</span>
+                  <span className="font-black italic">日曜・祝日</span>
                 </div>
+                <p className="text-xs text-gray-400 mt-2">※夏季、年末年始の長期休暇あり</p>
               </div>
             </div>
           </div>

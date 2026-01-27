@@ -57,12 +57,14 @@ export default function Footer() {
               初心者からプロ志望まで、本気で変わるなら今。<br />
               まずは体験からスタート！
             </p>
-            <Link
-              href="/reservation"
+            <a
+              href="https://picro.jp/sports/almafight/trials/entry/3284"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-orange-600 text-white px-8 py-4 font-black italic text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-2xl shadow-orange-900/40"
             >
               体験予約 →
-            </Link>
+            </a>
           </div>
 
           {/* ナビゲーションリンク - オプション2：区切り線付き */}
@@ -130,7 +132,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm font-sans text-gray-300">
               <p className="font-bold text-white">株式会社マーシャルワールドジャパン</p>
               <p>〒541-0051 大阪市中央区備後町3-1-6 アルファビル2階</p>
-              <p>TEL : 06-4256-2921</p>
+              <p>TEL : 06-4963-2224</p>
               <Link
                 href="https://www.mwjapan.jp/"
                 target="_blank"

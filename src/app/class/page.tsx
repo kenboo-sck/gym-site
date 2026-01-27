@@ -72,6 +72,19 @@ const classCategories = [
     ]
   },
   {
+    category: "TRAINING",
+    sub: "トレーニングプラン",
+    classes: [
+      {
+        title: "Training Plan",
+        en: "Gym Only Membership",
+        desc: "月額6,600円でトレーニングエリアを自由にご利用いただけるプランです。ウェイトトレーニングやコンディショニングに集中したい方、クラスの時間に合わない方に最適です。シャワーもご利用いただけます。※本プランではクラスへの参加はできません。",
+        image: "/rc-0009.png",
+        recommended: ["筋力トレーニングを中心に行いたい方", "クラスの時間に合わない方", "リーズナブルに始めたい方"]
+      }
+    ]
+  },
+  {
     category: "PRIVATE",
     sub: "プライベートレッスン",
     classes: [
@@ -203,9 +216,9 @@ export default function ClassPage() {
               <Link href="/schedule" className="bg-black text-white px-10 py-4 font-bold text-lg hover:bg-white hover:text-black transition-all uppercase italic">
                 スケジュールを見る
               </Link>
-              <Link href="/reservation" className="bg-white text-orange-600 px-10 py-4 font-bold text-lg hover:bg-black hover:text-white transition-all uppercase italic">
+              <a href="https://picro.jp/sports/almafight/trials/entry/3284" target="_blank" rel="noopener noreferrer" className="bg-white text-orange-600 px-10 py-4 font-bold text-lg hover:bg-black hover:text-white transition-all uppercase italic">
                 まずは体験から
-              </Link>
+              </a>
             </div>
           </div>
         </div>

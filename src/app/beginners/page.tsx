@@ -14,10 +14,10 @@ export default function BeginnersPage() {
           </h1>
           <p className="text-gray-400 font-bold mt-2 tracking-[0.2em] uppercase">初めての方へ</p>
         </div>
-        
+
         <div className="relative aspect-[4/5] md:aspect-[21/9] w-full overflow-hidden shadow-2xl mb-12 bg-black">
           <Image
-            src="/oh-1001.jpg" 
+            src="/oh-1001.jpg"
             alt="Beginners Welcome"
             fill
             className="object-cover opacity-60 md:opacity-70"
@@ -102,65 +102,65 @@ export default function BeginnersPage() {
           </h2>
           <p className="text-gray-400 font-bold mt-4 tracking-widest uppercase text-sm">こんな人におすすめ</p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 gap-6">
           {[
-            { 
-              image: "/rc-0001.png", 
+            {
+              image: "/rc-0001.png",
               title: "運動不足を解消したい方",
               text: "ジムのランニングマシンは続かない...そんな方にこそ格闘技がおすすめ。目標を持って楽しく体を動かせるので、自然と運動習慣が身につきます。週2-3回の練習で、確実に体力がついていくのを実感できます。"
             },
-            { 
-              image: "/rc-0002.png", 
+            {
+              image: "/rc-0002.png",
               title: "新しい仲間を作りたい方",
               text: "仕事や学校以外の「サードプレイス」が欲しい。年齢や職業を超えた仲間との出会いが待っています。練習後の雑談や、月1回の親睦会など、コミュニティとしての楽しみも充実しています。"
             },
-            { 
-              image: "/rc-0003.png", 
+            {
+              image: "/rc-0003.png",
               title: "護身術を身につけたい方",
               text: "単なるダイエットではなく、一生使える技術を習得。万が一の時に自分や大切な人を守る力になります。ブラジリアン柔術は、実戦で使える最も効率的な護身術として世界中で認められています。"
             },
-            { 
-              image: "/rc-0004.png", 
+            {
+              image: "/rc-0004.png",
               title: "ストレス発散したい方",
               text: "仕事や人間関係のストレスを健全な形で発散。スパーリングで汗を流せば、心も体もスッキリ。格闘技特有の集中力は、日常の悩みを忘れさせてくれる最高のリフレッシュになります。"
             },
-            { 
-              image: "/oh-1001.jpg", 
+            {
+              image: "/oh-1001.jpg",
               title: "自分を変えたい方",
               text: "何か新しいことに挑戦して、今の自分を変えたい。格闘技を通じて、肉体的な変化だけでなく、精神的な成長も得られます。「できない」が「できる」に変わる瞬間の喜びは、人生を変えるきっかけになります。"
             },
-            { 
-              image: "/oh-1002.png", 
+            {
+              image: "/oh-1002.png",
               title: "格闘技に興味はあるけど不安な方",
               text: "怪我や痛いのが怖い...その気持ちはよくわかります。当ジムでは安全第一で、防具の着用や段階的な指導を徹底。初心者同士での練習から始めるので、自分のペースで無理なく楽しめます。"
             },
-            { 
-              image: "/rc-0005.png", 
+            {
+              image: "/rc-0005.png",
               title: "子供の習い事を探している方",
               text: "お子様の体力づくりと礼儀作法の習得に最適。いじめ対策や自信をつけることにも繋がります。キッズクラスでは、遊びの要素を取り入れながら、楽しく格闘技の基礎を学べます。"
             },
-            { 
-              image: "/rc-0006.png", 
+            {
+              image: "/rc-0006.png",
               title: "女性で格闘技を始めたい方",
               text: "女性会員も多数在籍。女性専用の更衣室やシャワー完備で安心。ダイエット目的、護身目的、趣味として...それぞれの目的に合わせた指導を受けられます。清潔な環境で気持ちよくトレーニングできます。"
             }
           ].map((item, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="group bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="flex gap-6 p-6">
                 {/* 画像部分 */}
                 <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden">
-                  <Image 
-                    src={item.image} 
+                  <Image
+                    src={item.image}
                     alt={item.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                
+
                 {/* テキスト部分 */}
                 <div className="flex-1">
                   <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
@@ -309,12 +309,14 @@ export default function BeginnersPage() {
               まずは一度、体験レッスンでジムの雰囲気を感じてみませんか？<br />
               スタッフ一同、あなたのお越しを心よりお待ちしております。
             </p>
-            <Link 
-              href="/reservation" 
+            <a
+              href="https://picro.jp/sports/almafight/trials/entry/3284"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block bg-orange-600 text-white px-12 py-5 font-bold text-xl hover:bg-orange-500 transition-all shadow-2xl shadow-orange-900/40"
             >
               体験レッスンを予約する
-            </Link>
+            </a>
           </div>
         </div>
       </section>
