@@ -94,8 +94,10 @@ export default function InstructorsPage() {
             </div>
 
             <div className="pt-6">
-              <Link 
-                href="/reservation" 
+              <a
+                href="https://picro.jp/sports/almafight/trials/entry/3284"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative inline-block bg-orange-600 text-white px-12 py-5 hover:bg-black transition-all duration-300 border-r-4 border-orange-400 hover:border-gray-600 shadow-xl"
               >
                 <div className="flex flex-col items-start leading-none relative">
@@ -107,7 +109,7 @@ export default function InstructorsPage() {
                     <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
                   </span>
                 </div>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

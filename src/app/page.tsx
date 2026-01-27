@@ -102,9 +102,9 @@ export default function Home() {
           </div>
 
           <div className="mt-8 md:mt-12 flex flex-col md:flex-row gap-3 md:gap-5 justify-center items-center px-4 md:px-0">
-            <button className="w-full md:w-auto bg-orange-600 text-white px-8 py-4 md:px-12 md:py-5 font-bold text-sm md:text-lg hover:bg-orange-500 transition-all shadow-2xl shadow-orange-900/40 cursor-pointer italic">
+            <a href="https://picro.jp/sports/almafight/trials/entry/3284" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto bg-orange-600 text-white px-8 py-4 md:px-12 md:py-5 font-bold text-sm md:text-lg hover:bg-orange-500 transition-all shadow-2xl shadow-orange-900/40 cursor-pointer italic text-center">
               今すぐ無料で体験する
-            </button>
+            </a>
             <Link href="/class" className="w-full md:w-auto border border-white/20 text-white px-8 py-4 md:px-12 md:py-5 font-bold text-sm md:text-lg hover:bg-white/10 transition-all backdrop-blur-sm cursor-pointer italic text-center">
               クラスの紹介
             </Link>
@@ -203,12 +203,14 @@ export default function Home() {
                 <p className="text-orange-100 font-bold mb-6 md:mb-8 max-w-md text-sm md:text-base">
                   本物の技術、最高の環境。あなたの挑戦を私たちが全力でサポートします。まずは無料体験から。
                 </p>
-                <Link
-                  href="/reservation"
+                <a
+                  href="https://picro.jp/sports/almafight/trials/entry/3284"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-white text-orange-600 px-10 py-4 font-black italic uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-xl"
                 >
                   体験予約はこちらから →
-                </Link>
+                </a>
               </div>
             </div>
           </div>

@@ -117,8 +117,10 @@ export default function AccessPage() {
           </h2>
           <p className="text-gray-500 font-bold italic">見学・体験は随時受け付けております。お気軽にお越しください。</p>
         </div>
-        <Link 
-          href="/reservation" 
+        <a
+          href="https://picro.jp/sports/almafight/trials/entry/3284"
+          target="_blank"
+          rel="noopener noreferrer"
           className="group relative inline-block bg-orange-600 text-white px-12 py-5 hover:bg-black transition-all duration-300 border-r-4 border-orange-400 hover:border-gray-600 shadow-xl"
         >
           <div className="flex flex-col items-start leading-none relative">
@@ -129,7 +131,7 @@ export default function AccessPage() {
               <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
             </span>
           </div>
-        </Link>
+        </a>
       </section>
     </div>
   );

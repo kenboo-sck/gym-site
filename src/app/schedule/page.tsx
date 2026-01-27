@@ -83,7 +83,7 @@ export default function WeeklySchedulePage() {
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto font-[family-name:var(--font-oswald)]">
-      
+
       {/* ヘッダー */}
       <section className="mb-16">
         <div className="border-l-8 border-orange-600 pl-6 mb-12">
@@ -108,8 +108,8 @@ export default function WeeklySchedulePage() {
                 <div className="space-y-3 flex-1">
                   {daySchedules.length > 0 ? (
                     daySchedules.map(item => (
-                      <div 
-                        key={item.id} 
+                      <div
+                        key={item.id}
                         style={{ borderLeftColor: item.color || '#ea580c' }}
                         className="bg-white border-l-4 p-3 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
                       >
@@ -190,8 +190,8 @@ export default function WeeklySchedulePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayClasses.length > 0 ? (
             displayClasses.map((cls) => (
-              <div 
-                key={cls.id} 
+              <div
+                key={cls.id}
                 onClick={() => setSelectedClass(cls)}
                 className="group bg-white p-8 border border-gray-100 shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden cursor-pointer"
               >
@@ -203,15 +203,15 @@ export default function WeeklySchedulePage() {
                 </div>
 
                 {/* ホバー時のアクセントグラデーション */}
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none"
                   style={{ background: `radial-gradient(circle at top right, ${cls.color || '#ea580c'}, transparent)` }}
                 />
 
                 <div className="relative z-10">
                   <div className="flex items-center gap-4 mb-4">
-                    <div 
-                      className="w-4 h-4 group-hover:scale-125 transition-transform duration-300" 
+                    <div
+                      className="w-4 h-4 group-hover:scale-125 transition-transform duration-300"
                       style={{ backgroundColor: cls.color || '#ea580c' }}
                     />
                     <h3 className="text-2xl font-black italic uppercase tracking-tight">{cls.title}</h3>
@@ -234,11 +234,11 @@ export default function WeeklySchedulePage() {
       {selectedClass && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           {/* 背景オーバーレイ */}
-          <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-md animate-in fade-in duration-300" 
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-md animate-in fade-in duration-300"
             onClick={() => setSelectedClass(null)}
           />
-          
+
           {/* モーダル本体 */}
           <div className="relative bg-white w-full max-w-2xl max-h-[90vh] shadow-2xl overflow-y-auto animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
             {/* ヘッダー */}
@@ -249,7 +249,7 @@ export default function WeeklySchedulePage() {
                 </h3>
                 <p className="text-orange-600 text-xs font-bold mt-1 tracking-widest uppercase">Class Details & Schedule</p>
               </div>
-              <button 
+              <button
                 onClick={() => setSelectedClass(null)}
                 className="text-gray-400 hover:text-black transition-colors p-2"
               >
@@ -291,8 +291,8 @@ export default function WeeklySchedulePage() {
                 <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3 italic">Weekly Schedule / 週間スケジュール</h4>
                 {weekLabels.map((label, idx) => {
                   // タイトルの空白を除去し、小文字に変換して比較（より柔軟なマッチング）
-                  const daySessions = schedules.filter(s => 
-                    s.title?.trim().toLowerCase() === selectedClass.title?.trim().toLowerCase() && 
+                  const daySessions = schedules.filter(s =>
+                    s.title?.trim().toLowerCase() === selectedClass.title?.trim().toLowerCase() &&
                     s.dayOfWeek === idx
                   );
                   if (daySessions.length === 0) return null;
@@ -314,21 +314,23 @@ export default function WeeklySchedulePage() {
                   );
                 })}
                 {/* 全曜日通してスケジュールが存在するかチェック */}
-                {schedules.filter(s => 
+                {schedules.filter(s =>
                   s.title?.trim().toLowerCase() === selectedClass.title?.trim().toLowerCase()
                 ).length === 0 && (
-                  <p className="text-center py-8 text-gray-400 font-bold italic">現在、このクラスの定期スケジュールはありません。</p>
-                )}
+                    <p className="text-center py-8 text-gray-400 font-bold italic">現在、このクラスの定期スケジュールはありません。</p>
+                  )}
               </div>
-              
+
               <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                <Link 
-                  href="/reservation"
+                <a
+                  href="https://picro.jp/sports/almafight/trials/entry/3284"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex-1 bg-orange-600 text-white text-center py-4 font-black italic uppercase tracking-widest hover:bg-orange-500 transition-colors shadow-xl shadow-orange-600/20"
                 >
                   Free Trial / 無料体験予約
-                </Link>
-                <button 
+                </a>
+                <button
                   onClick={() => setSelectedClass(null)}
                   className="flex-1 bg-black text-white py-4 font-black italic uppercase tracking-widest hover:bg-gray-800 transition-colors"
                 >

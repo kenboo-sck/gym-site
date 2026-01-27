@@ -132,7 +132,7 @@ export default function Footer() {
               <p>〒541-0051 大阪市中央区備後町3-1-6 アルファビル2階</p>
               <p>TEL : 06-4256-2921</p>
               <Link
-                href="https://your-company-site.com"
+                href="https://www.mwjapan.jp/"
                 target="_blank"
                 className="inline-block text-orange-500 hover:text-orange-400 transition-colors mt-2 font-bold"
               >

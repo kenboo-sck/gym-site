@@ -69,9 +69,9 @@ export default function MembershipPage() {
               </p>
             </div>
 
-            <Link href="/reservation" className="inline-block bg-white text-black px-10 py-4 font-bold text-lg hover:bg-orange-600 hover:text-white transition-all uppercase italic shadow-2xl">
+            <a href="https://picro.jp/sports/almafight/trials/entry/3284" target="_blank" rel="noopener noreferrer" className="inline-block bg-white text-black px-10 py-4 font-bold text-lg hover:bg-orange-600 hover:text-white transition-all uppercase italic shadow-2xl">
               Book a Trial Now
-            </Link>
+            </a>
           </div>
         </div>
       </section>
