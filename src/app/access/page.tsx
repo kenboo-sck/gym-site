@@ -1,4 +1,10 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'アクセス',
+  description: '大阪メトロ本町駅1番出口から徒歩5分。ALMA FIGHT GYMへのアクセス・地図・営業時間・駐車場情報。大阪市中央区の通いやすい格闘技ジム。',
+};
 
 export default function AccessPage() {
   return (
@@ -96,14 +102,14 @@ export default function AccessPage() {
               <h3 className="text-2xl font-black italic uppercase mb-4">Honmachi Station</h3>
               <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-6">御堂筋線「本町駅」</p>
               <p className="text-gray-900 font-bold text-xl italic">
-                1番・3番出口より <span className="text-orange-600 text-3xl">徒歩1分</span>
+                1番・3番出口より <span className="text-orange-600 text-3xl">徒歩5分</span>
               </p>
             </div>
             <div className="bg-white p-10 shadow-xl border-l-8 border-gray-200">
               <h3 className="text-2xl font-black italic uppercase mb-4">Sakaisuji Honmachi</h3>
               <p className="text-gray-400 font-bold text-xs uppercase tracking-widest mb-6">堺筋線「堺筋本町駅」</p>
               <p className="text-gray-900 font-bold text-xl italic">
-                17番出口より <span className="text-gray-400 text-3xl">徒歩5分</span>
+                17番出口より <span className="text-gray-400 text-3xl">徒歩8分</span>
               </p>
             </div>
           </div>

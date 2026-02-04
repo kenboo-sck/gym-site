@@ -131,7 +131,7 @@ export default function Footer() {
             </h3>
             <div className="space-y-2 text-sm font-sans text-gray-300">
               <p className="font-bold text-white">株式会社マーシャルワールドジャパン</p>
-              <p>〒541-0051 大阪市中央区備後町3-1-6 アルファビル2階</p>
+              <p>〒541-0051<br />大阪市中央区備後町3-1-6<br />船場アルファビル2階</p>
               <p>TEL : 06-4963-2224</p>
               <Link
                 href="https://www.mwjapan.jp/"

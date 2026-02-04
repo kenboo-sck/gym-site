@@ -13,8 +13,11 @@ const oswald = Oswald({
 });
 
 export const metadata: Metadata = {
-  title: "G-STYLE GYM",
-  description: "あなたの理想を形にするジム",
+  title: {
+    default: "ALMA FIGHT GYM OSAKA HONMACHI",
+    template: "%s | ALMA FIGHT GYM OSAKA HONMACHI",
+  },
+  description: "大阪・本町駅徒歩5分の格闘技ジム。ブラジリアン柔術・キックボクシング・MMAを全日本チャンピオンが直接指導。初心者歓迎、無料体験実施中。清潔な設備と充実のトレーニング環境で理想の自分へ。",
   icons: {
     icon: "/afgoh_icon.png",
     apple: "/afgoh_icon.png",
