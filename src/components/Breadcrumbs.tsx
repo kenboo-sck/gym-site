@@ -45,13 +45,13 @@ export default function Breadcrumbs() {
 
   return (
     <nav className="fixed top-20 left-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 font-[family-name:var(--font-oswald)]">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-gray-400">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-gray-400 flex-nowrap overflow-x-auto whitespace-nowrap">
         <Link href="/" className="hover:text-orange-600 transition-colors">HOME</Link>
-        
+
         {paths.map((path, index) => {
           const isLast = index === paths.length - 1;
           const href = `/${paths.slice(0, index + 1).join("/")}`;
-          
+
           let label = routeMap[path] || path;
           if (path === params.id && pathname.startsWith("/news/")) {
             label = newsTitle || "LOADING...";
