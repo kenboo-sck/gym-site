@@ -217,6 +217,197 @@ export default function HomeContent() {
                 </div>
             </section>
 
+            {/* 施設ギャラリーセクション */}
+            <section className="py-24 bg-gray-900 font-[family-name:var(--font-oswald)] overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="mb-16 border-l-8 border-orange-600 pl-6">
+                        <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-none text-white">
+                            FACILITY <span className="text-orange-600">GALLERY</span>
+                        </h2>
+                        <p className="text-gray-400 font-bold mt-2 tracking-widest uppercase text-sm">施設紹介</p>
+                    </div>
+
+                    {/* メイングリッド */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+                        {/* トレーニング機器 - 大きめ表示 */}
+                        <div className="col-span-2 row-span-2 relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image10.jpeg"
+                                    alt="トレーニングエリア"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <h3 className="text-xl font-black italic uppercase text-white">Training Area</h3>
+                                    <p className="text-gray-300 text-sm">本格的なトレーニングマシン完備</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* トレーニング機器サブ */}
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image12.jpeg"
+                                    alt="トレーニング機器"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image14.jpeg"
+                                    alt="トレーニング機器"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image16.jpeg"
+                                    alt="トレーニング機器"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image18.jpeg"
+                                    alt="トレーニング機器"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+
+                        {/* マット・サンドバッグエリア */}
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image24.jpeg"
+                                    alt="マットエリア"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image25.jpeg"
+                                    alt="マットエリア"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+
+                        {/* シャワー・更衣室 */}
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image6.jpeg"
+                                    alt="シャワールーム"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <h3 className="text-sm font-black italic uppercase text-white">Shower</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image9.jpeg"
+                                    alt="更衣室"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <h3 className="text-sm font-black italic uppercase text-white">Locker Room</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* ダンベル・洗面 */}
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image5.jpeg"
+                                    alt="ダンベル"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <h3 className="text-sm font-black italic uppercase text-white">Free Weights</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="relative group overflow-hidden">
+                            <div className="relative aspect-square">
+                                <Image
+                                    src="/image8.jpeg"
+                                    alt="洗面台"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <h3 className="text-sm font-black italic uppercase text-white">Wash Room</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-span-2 relative group overflow-hidden">
+                            <div className="relative aspect-[2/1]">
+                                <Image
+                                    src="/image30.jpeg"
+                                    alt="練習エリア全景"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                <div className="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <h3 className="text-xl font-black italic uppercase text-white">Training Mat</h3>
+                                    <p className="text-gray-300 text-sm">広々としたマットエリア</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 施設の特徴 */}
+                    <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-black italic text-orange-600 mb-2">広々</div>
+                            <p className="text-gray-400 text-xs md:text-sm font-bold">マットエリア</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-black italic text-orange-600 mb-2">清潔</div>
+                            <p className="text-gray-400 text-xs md:text-sm font-bold">常に清潔な環境</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-black italic text-orange-600 mb-2">充実</div>
+                            <p className="text-gray-400 text-xs md:text-sm font-bold">本格的な設備</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl md:text-4xl font-black italic text-orange-600 mb-2">無料</div>
+                            <p className="text-gray-400 text-xs md:text-sm font-bold">シャワー完備</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* ブラジリアン柔術の魅力セクション */}
             <section className="py-24 bg-white font-[family-name:var(--font-oswald)] overflow-hidden">

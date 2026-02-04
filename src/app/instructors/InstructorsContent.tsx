@@ -22,7 +22,7 @@ export default function InstructorsContent() {
                     {/* 画像エリア */}
                     <div className="w-full md:w-1/2 relative aspect-[3/4] overflow-hidden shadow-2xl bg-gray-100">
                         <Image
-                            src="/instructor-keita.jpg"
+                            src="/294436867_0.jpg"
                             alt="井上啓太"
                             fill
                             className="object-cover"
@@ -110,6 +110,46 @@ export default function InstructorsContent() {
                                 </div>
                             </a>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 試合・活動ギャラリー */}
+            <section className="max-w-7xl mx-auto px-6 mt-24">
+                <div className="border-l-8 border-orange-600 pl-6 mb-12">
+                    <h2 className="text-3xl md:text-5xl font-black italic tracking-tighter uppercase leading-none text-gray-900">
+                        FIGHT <span className="text-orange-600">GALLERY</span>
+                    </h2>
+                    <p className="text-gray-400 font-bold mt-2 tracking-[0.2em] uppercase text-sm">試合・活動記録</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="relative group overflow-hidden aspect-[4/3]">
+                        <Image
+                            src="/afg_001.jpg"
+                            alt="試合写真1"
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div className="relative group overflow-hidden aspect-[4/3]">
+                        <Image
+                            src="/afg_002.jpg"
+                            alt="試合写真2"
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div className="relative group overflow-hidden aspect-[4/3]">
+                        <Image
+                            src="/afg_003.jpg"
+                            alt="試合写真3"
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
                 </div>
             </section>
