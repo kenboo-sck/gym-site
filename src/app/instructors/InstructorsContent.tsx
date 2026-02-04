@@ -25,6 +25,9 @@ export default function InstructorsContent() {
                             src="/294436867_0.jpg"
                             alt="井上啓太"
                             fill
+                            priority
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            quality={75}
                             className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -129,6 +132,9 @@ export default function InstructorsContent() {
                             src="/afg_001.jpg"
                             alt="試合写真1"
                             fill
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            quality={70}
                             className="object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -138,6 +144,9 @@ export default function InstructorsContent() {
                             src="/afg_002.jpg"
                             alt="試合写真2"
                             fill
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            quality={70}
                             className="object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -147,6 +156,9 @@ export default function InstructorsContent() {
                             src="/afg_003.jpg"
                             alt="試合写真3"
                             fill
+                            loading="lazy"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            quality={70}
                             className="object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

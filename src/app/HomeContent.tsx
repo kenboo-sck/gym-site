@@ -67,6 +67,8 @@ export default function HomeContent() {
                     alt="トレーニングジムの風景"
                     fill
                     priority
+                    sizes="100vw"
+                    quality={75}
                     className="object-cover"
                 />
                 {/* オーバーレイを濃くして視認性を向上 */}
@@ -256,6 +258,9 @@ export default function HomeContent() {
                                         src={img.src}
                                         alt={img.alt}
                                         fill
+                                        loading="lazy"
+                                        sizes="(max-width: 768px) 50vw, 25vw"
+                                        quality={60}
                                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -318,6 +323,9 @@ export default function HomeContent() {
                                     src="/oh-1001.jpg"
                                     alt="Mental Game"
                                     fill
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                    quality={70}
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
                             </div>
@@ -336,6 +344,9 @@ export default function HomeContent() {
                                     src="/oh-1002.png"
                                     alt="Total Fitness"
                                     fill
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                    quality={70}
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
                             </div>
@@ -354,6 +365,9 @@ export default function HomeContent() {
                                     src="/oh-04.jpg"
                                     alt="Community"
                                     fill
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                    quality={70}
                                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
                             </div>
@@ -380,6 +394,9 @@ export default function HomeContent() {
                                     src="/mma-hero.png"
                                     alt="MMA"
                                     fill
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    quality={60}
                                     className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-50"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -401,6 +418,9 @@ export default function HomeContent() {
                                     src="/kick-hero.png"
                                     alt="KickBoxing"
                                     fill
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    quality={60}
                                     className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-50"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -446,8 +466,10 @@ export default function HomeContent() {
                                             src={item.image || item.imageUrl || item.thumbnail}
                                             alt={item.title}
                                             fill
+                                            loading="lazy"
+                                            sizes="(max-width: 768px) 50vw, 25vw"
+                                            quality={60}
                                             className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                            unoptimized={true}
                                         />
                                     ) : (
                                         <div className="flex items-center justify-center h-full text-gray-300 font-black italic text-xs tracking-widest">NO IMAGE</div>
@@ -512,6 +534,8 @@ export default function HomeContent() {
                             src={selectedImage}
                             alt="施設画像"
                             fill
+                            sizes="100vw"
+                            quality={85}
                             className="object-contain"
                         />
                     </div>

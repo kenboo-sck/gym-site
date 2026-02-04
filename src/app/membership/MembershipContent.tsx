@@ -32,6 +32,9 @@ export default function MembershipContent() {
                         src="/rc-0008.png"
                         alt="Campaign Background"
                         fill
+                        priority
+                        sizes="100vw"
+                        quality={60}
                         className="object-cover grayscale opacity-45"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
