@@ -180,7 +180,7 @@ export default function BeginnersContent() {
             <section className="max-w-7xl mx-auto px-6 mb-24">
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                     <div className="order-2 md:order-1 relative aspect-square overflow-hidden shadow-2xl">
-                        <Image src="/hm-t-07.png" alt="Gym Atmosphere" fill className="object-cover" />
+                        <Image src="/image10.jpeg" alt="Gym Atmosphere" fill sizes="(max-width: 768px) 100vw, 50vw" quality={70} className="object-cover" />
                     </div>
                     <div className="order-1 md:order-2">
                         <div className="border-l-8 border-orange-600 pl-6 mb-8">
