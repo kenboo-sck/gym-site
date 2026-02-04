@@ -8,6 +8,7 @@ import Link from 'next/link';
 
 export default function HomeContent() {
     const [newsList, setNewsList] = useState<any[]>([]);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchNews = async () => {
@@ -39,6 +40,21 @@ export default function HomeContent() {
         { title: "Machines", desc: "本格的なトレーニングマシンを完備。格闘技に必要な補強運動も道場内で完結します。" },
         { title: "Rental", desc: "道着などの用具レンタルが可能。手ぶらでOKなので、思い立った時に練習できます。" },
         { title: "Safety", desc: "スポーツ保険完備。万が一の怪我にも備え、安心してトレーニングに集中できる環境です。" },
+    ];
+
+    const facilityImages = [
+        { src: "/image10.jpeg", alt: "トレーニングエリア", label: "Training Area" },
+        { src: "/image12.jpeg", alt: "トレーニング機器", label: "Machines" },
+        { src: "/image14.jpeg", alt: "トレーニング機器", label: "Machines" },
+        { src: "/image16.jpeg", alt: "トレーニング機器", label: "Machines" },
+        { src: "/image18.jpeg", alt: "トレーニング機器", label: "Machines" },
+        { src: "/image24.jpeg", alt: "マットエリア", label: "Mat Area" },
+        { src: "/image25.jpeg", alt: "マットエリア", label: "Mat Area" },
+        { src: "/image6.jpeg", alt: "シャワールーム", label: "Shower" },
+        { src: "/image9.jpeg", alt: "更衣室", label: "Locker Room" },
+        { src: "/image5.jpeg", alt: "ダンベル", label: "Free Weights" },
+        { src: "/image8.jpeg", alt: "洗面台", label: "Wash Room" },
+        { src: "/image30.jpeg", alt: "練習エリア全景", label: "Training Mat" },
     ];
 
     return (
@@ -224,167 +240,37 @@ export default function HomeContent() {
                         <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-none text-white">
                             FACILITY <span className="text-orange-600">GALLERY</span>
                         </h2>
-                        <p className="text-gray-400 font-bold mt-2 tracking-widest uppercase text-sm">施設紹介</p>
+                        <p className="text-gray-400 font-bold mt-2 tracking-widest uppercase text-sm">施設紹介（クリックで拡大）</p>
                     </div>
 
                     {/* メイングリッド */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
-                        {/* トレーニング機器 - 大きめ表示 */}
-                        <div className="col-span-2 row-span-2 relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image10.jpeg"
-                                    alt="トレーニングエリア"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <div className="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <h3 className="text-xl font-black italic uppercase text-white">Training Area</h3>
-                                    <p className="text-gray-300 text-sm">本格的なトレーニングマシン完備</p>
+                        {facilityImages.map((img, index) => (
+                            <div
+                                key={index}
+                                className={`relative group overflow-hidden cursor-pointer ${index === 0 ? 'col-span-2 row-span-2' : ''} ${index === 11 ? 'col-span-2' : ''}`}
+                                onClick={() => setSelectedImage(img.src)}
+                            >
+                                <div className={`relative ${index === 0 ? 'aspect-square' : index === 11 ? 'aspect-[2/1]' : 'aspect-square'}`}>
+                                    <Image
+                                        src={img.src}
+                                        alt={img.alt}
+                                        fill
+                                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                    <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                        <h3 className="text-sm font-black italic uppercase text-white">{img.label}</h3>
+                                    </div>
+                                    {/* クリックアイコン */}
+                                    <div className="absolute top-2 right-2 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* トレーニング機器サブ */}
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image12.jpeg"
-                                    alt="トレーニング機器"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                            </div>
-                        </div>
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image14.jpeg"
-                                    alt="トレーニング機器"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                            </div>
-                        </div>
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image16.jpeg"
-                                    alt="トレーニング機器"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                            </div>
-                        </div>
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image18.jpeg"
-                                    alt="トレーニング機器"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                            </div>
-                        </div>
-
-                        {/* マット・サンドバッグエリア */}
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image24.jpeg"
-                                    alt="マットエリア"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                            </div>
-                        </div>
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image25.jpeg"
-                                    alt="マットエリア"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                            </div>
-                        </div>
-
-                        {/* シャワー・更衣室 */}
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image6.jpeg"
-                                    alt="シャワールーム"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <h3 className="text-sm font-black italic uppercase text-white">Shower</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image9.jpeg"
-                                    alt="更衣室"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <h3 className="text-sm font-black italic uppercase text-white">Locker Room</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* ダンベル・洗面 */}
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image5.jpeg"
-                                    alt="ダンベル"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <h3 className="text-sm font-black italic uppercase text-white">Free Weights</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="relative group overflow-hidden">
-                            <div className="relative aspect-square">
-                                <Image
-                                    src="/image8.jpeg"
-                                    alt="洗面台"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <div className="absolute bottom-0 left-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <h3 className="text-sm font-black italic uppercase text-white">Wash Room</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-span-2 relative group overflow-hidden">
-                            <div className="relative aspect-[2/1]">
-                                <Image
-                                    src="/image30.jpeg"
-                                    alt="練習エリア全景"
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                <div className="absolute bottom-0 left-0 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <h3 className="text-xl font-black italic uppercase text-white">Training Mat</h3>
-                                    <p className="text-gray-300 text-sm">広々としたマットエリア</p>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
 
                     {/* 施設の特徴 */}
@@ -600,6 +486,42 @@ export default function HomeContent() {
                     </div>
                 </div>
             </section>
+
+            {/* 画像拡大モーダル */}
+            {selectedImage && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    {/* 閉じるボタン */}
+                    <button
+                        className="absolute top-6 right-6 text-white hover:text-orange-500 transition-colors z-50"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                    {/* 拡大画像 */}
+                    <div
+                        className="relative max-w-5xl max-h-[90vh] w-full h-full"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <Image
+                            src={selectedImage}
+                            alt="施設画像"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+
+                    {/* クリックで閉じるヒント */}
+                    <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-gray-400 text-sm font-bold">
+                        クリックまたはESCで閉じる
+                    </p>
+                </div>
+            )}
 
         </main>
     );
