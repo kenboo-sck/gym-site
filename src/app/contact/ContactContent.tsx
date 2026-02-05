@@ -19,6 +19,8 @@ interface FormData {
     city: string;
     address: string;
     message: string;
+    // ハニーポットフィールド（スパム対策）
+    website: string;
 }
 
 // フォームコンポーネント本体
@@ -39,8 +41,12 @@ function ContactFormContent() {
         prefecture: '',
         city: '',
         address: '',
-        message: ''
+        message: '',
+        website: '' // ハニーポット（人間は入力しない）
     });
+
+    // フォーム表示開始時刻を記録（ボット対策）
+    const [formLoadTime] = useState<number>(Date.now());
 
     const [emailError, setEmailError] = useState("");
     const [isConfirm, setIsConfirm] = useState(false);
@@ -108,6 +114,21 @@ function ContactFormContent() {
     const handleFinalSubmit = async () => {
         console.log('=== handleFinalSubmit 開始 ===');
         console.log('executeRecaptcha:', executeRecaptcha);
+
+        // ハニーポットチェック（ボットが自動入力した場合はスパムとみなす）
+        if (formData.website) {
+            console.log('ハニーポットトラップ発動');
+            alert('お問い合わせを送信しました。ありがとうございました!');
+            return; // スパムだが、ボットにはバレないよう成功メッセージを表示
+        }
+
+        // 送信までの時間をチェック（3秒未満の場合はボットの可能性が高い）
+        const timeSinceLoad = Date.now() - formLoadTime;
+        if (timeSinceLoad < 3000) {
+            console.log('送信が速すぎます:', timeSinceLoad, 'ms');
+            alert('お問い合わせを送信しました。ありがとうございました!');
+            return; // スパムだが、ボットにはバレないよう成功メッセージを表示
+        }
 
         if (!executeRecaptcha) {
             alert('reCAPTCHAの準備ができていません。もう一度お試しください。');
@@ -177,7 +198,8 @@ function ContactFormContent() {
                 prefecture: '',
                 city: '',
                 address: '',
-                message: ''
+                message: '',
+                website: ''
             });
         } catch (error) {
             console.error("送信エラー:", error);
@@ -303,6 +325,30 @@ function ContactFormContent() {
                             <div className="space-y-2">
                                 <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Message / お問い合わせ内容</label>
                                 <textarea name="message" value={formData.message} onChange={handleChange} className="w-full border-2 border-gray-100 p-4 h-48 focus:border-orange-600 outline-none resize-none"></textarea>
+                            </div>
+
+                            {/* ハニーポットフィールド - ボットトラップ（人間には見えない） */}
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    left: '-9999px',
+                                    opacity: 0,
+                                    height: 0,
+                                    overflow: 'hidden',
+                                    pointerEvents: 'none'
+                                }}
+                                aria-hidden="true"
+                            >
+                                <label htmlFor="website">ウェブサイト（入力しないでください）</label>
+                                <input
+                                    type="text"
+                                    id="website"
+                                    name="website"
+                                    value={formData.website}
+                                    onChange={handleChange}
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                />
                             </div>
 
                             <div className="text-center pt-6">
