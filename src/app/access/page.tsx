@@ -61,8 +61,8 @@ export default function AccessPage() {
               <h2 className="text-2xl font-black italic uppercase mb-6 border-b-2 border-orange-600 pb-2 inline-block">Contact</h2>
               <div className="space-y-2">
                 <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">Phone</p>
-                <a href="tel:0642562921" className="text-3xl font-black italic text-orange-600 hover:text-black transition-colors">
-                  06-4256-2921
+                <a href="tel:0642562912" className="text-3xl font-black italic text-orange-600 hover:text-black transition-colors">
+                  06-4256-2912
                 </a>
               </div>
             </div>
