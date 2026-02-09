@@ -87,33 +87,53 @@ export default function HomeContent() {
                     </p>
 
                     {/* キャンペーンバッジ */}
-                    <div className="mt-6 md:mt-10 inline-block w-[calc(100%-2rem)] md:w-auto bg-black/60 backdrop-blur-md border border-orange-600/50 p-4 md:p-6 shadow-2xl relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 bg-orange-600 text-white px-2 py-0.5 text-[8px] md:text-[10px] font-bold italic tracking-tighter uppercase">Limited Offer</div>
-                        <div className="relative z-10 text-left">
-                            <h3 className="text-orange-500 text-[10px] md:text-xs font-bold tracking-widest mb-3 uppercase italic text-center md:text-left">Opening Campaign</h3>
-                            <div className="grid grid-cols-1 md:flex md:flex-row gap-3 md:gap-8">
-                                <div className="flex justify-between md:flex-col items-center md:items-start border-b border-white/5 md:border-none pb-2 md:pb-0">
-                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider md:mb-0.5">Benefit 01</span>
-                                    <span className="text-lg md:text-2xl font-black italic">入会金 ¥0</span>
-                                </div>
-                                <div className="hidden md:block w-px h-10 bg-white/10"></div>
-                                <div className="flex justify-between md:flex-col items-center md:items-start border-b border-white/5 md:border-none pb-2 md:pb-0">
-                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider md:mb-0.5">Benefit 02</span>
-                                    <span className="text-lg md:text-2xl font-black italic">道着プレゼント</span>
-                                </div>
-                                <div className="hidden md:block w-px h-10 bg-white/10"></div>
-                                <div className="flex justify-between md:flex-col items-center md:items-start">
-                                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider md:mb-0.5">Benefit 03</span>
-                                    <span className="text-lg md:text-2xl font-black italic text-orange-500">2ヶ月無料</span>
-                                </div>
-                            </div>
-                            <div className="mt-4 flex flex-col items-center md:items-start space-y-2 pt-4 border-t border-white/10">
-                                <p className="text-base md:text-xl font-bold italic text-center md:text-left">
-                                    先着 <span className="text-orange-500 text-xl md:text-2xl underline decoration-white decoration-2 underline-offset-4">30名様</span> 限定
+                    {/* Grand Open Campaign Badge */}
+                    <div className="mt-6 md:mt-10 w-full max-w-5xl mx-auto bg-black/80 backdrop-blur-md border border-orange-600/50 p-6 md:p-8 shadow-2xl relative overflow-hidden group rounded-sm">
+                        <div className="absolute top-0 right-0 bg-gradient-to-l from-orange-600 to-red-600 text-white px-4 py-1 text-[10px] md:text-xs font-black italic tracking-tighter uppercase shadow-lg animate-pulse">
+                            GRAND OPENING
+                        </div>
+
+                        <div className="relative z-10">
+                            {/* Headline */}
+                            <h2 className="text-3xl md:text-5xl font-black italic text-white mb-6 tracking-tighter text-center leading-tight">
+                                <span className="text-orange-500 mr-2">2026年2月16日</span>グランドオープン
+                            </h2>
+
+                            {/* Campaign Text */}
+                            {/* Campaign Text */}
+                            <div className="bg-white/5 border border-white/10 p-4 md:p-6 mb-6 rounded text-center">
+                                <p className="text-white text-sm md:text-xl font-bold leading-loose flex flex-col md:flex-row items-center justify-center gap-2 md:gap-0 flex-wrap">
+                                    <span>オープン記念イベントとして</span>
+                                    <span className="hidden md:inline mx-2"> </span>
+                                    <div className="flex flex-col md:flex-row items-center gap-2">
+                                        <span className="text-orange-500 text-lg md:text-2xl italic">入会金無料</span>
+                                        <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+                                        <span className="text-orange-500 text-lg md:text-2xl italic">道着プレゼント</span>
+                                        <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+                                        <span className="text-orange-500 text-lg md:text-2xl italic">月会費2ヶ月無料</span>
+                                    </div>
+                                    <span className="hidden md:inline mx-2"> </span>
+                                    <span className="flex items-center gap-1">
+                                        の大キャンペーンをご用意
+                                        <svg className="w-5 h-5 text-orange-500 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
+                                    </span>
                                 </p>
-                                <p className="text-[9px] text-gray-500 font-medium leading-tight text-center md:text-left italic">
-                                    ※6ヶ月間の継続利用が条件となります。<br />
-                                    6か月以内に解約の場合は実費請求となります。
+                                <p className="text-[10px] md:text-xs text-gray-400 mt-2 font-medium">
+                                    ※6ヶ月以上の継続条件有
+                                </p>
+                            </div>
+
+                            {/* Pre-open Section */}
+                            <div className="bg-orange-900/30 border border-orange-500/30 p-4 rounded text-center">
+                                <h3 className="text-orange-400 font-bold text-base md:text-xl italic mb-2 uppercase tracking-wider flex items-center justify-center gap-2">
+                                    <span className="w-8 h-px bg-orange-400/50"></span>
+                                    PRE-OPEN: 2.9 - 2.13
+                                    <span className="w-8 h-px bg-orange-400/50"></span>
+                                </h3>
+                                <p className="text-sm md:text-base text-gray-200 font-medium leading-relaxed">
+                                    また2月9日〜13日はプレオープン期間として<br className="md:hidden" />
+                                    特別スケジュール、出稽古無料、<br className="hidden md:block" />
+                                    初めての方へ無料体験会も予定しております。
                                 </p>
                             </div>
                         </div>
