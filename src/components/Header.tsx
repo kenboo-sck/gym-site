@@ -11,6 +11,7 @@ const navItems = [
   { name: 'お知らせ', en: 'NEWS', href: '/news' },
   { name: 'スケジュール', en: 'SCHEDULE', href: '/schedule' },
   { name: 'インストラクター', en: 'INSTRUCTORS', href: '/instructors' },
+  { name: 'ショップ情報', en: 'SHOP INFO', href: '/shop' },
   { name: 'アクセス', en: 'ACCESS', href: '/access' },
   { name: '問合せ', en: 'CONTACT', href: '/contact' },
 ];
@@ -20,28 +21,28 @@ export default function Header() {
 
   return (
     <header className="fixed w-full top-0 z-50 bg-white border-b border-gray-100 font-sans">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-50 bg-white">
+      <div className="max-w-[1600px] mx-auto px-6 h-20 flex items-center justify-between relative z-50 bg-white">
 
         {/* ロゴ部分 */}
         <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
           <Image
             src="/logo_t.svg"
             alt="ALMA FIGHT GYM ロゴ"
-            width={180}
+            width={160}
             height={40}
             className="object-contain invert"
           />
         </Link>
 
         {/* ナビゲーション */}
-        <nav className="hidden lg:flex gap-8 items-center">
+        <nav className="hidden xl:flex gap-8 items-center">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className="group flex flex-col items-center leading-tight"
             >
-              <span className="font-[family-name:var(--font-oswald)] text-base font-bold tracking-wider text-gray-900 group-hover:text-orange-600 transition-colors">
+              <span className="font-[family-name:var(--font-oswald)] text-base font-black italic tracking-wider text-gray-900 group-hover:text-orange-600 transition-colors">
                 {item.en}
               </span>
               {/* 日本語：斜体で小さく（下） */}
@@ -55,7 +56,7 @@ export default function Header() {
             href="https://picro.jp/sports/almafight/trials/entry/3284"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 bg-black text-white px-6 py-3 text-sm font-bold hover:bg-orange-600 transition-all duration-300 shadow-md"
+            className="ml-2 bg-black text-white px-5 py-3 text-sm font-black italic hover:bg-orange-600 transition-all duration-300 shadow-md"
           >
             体験予約
           </a>
@@ -63,7 +64,7 @@ export default function Header() {
 
         {/* ハンバーガーボタン (Mobile) */}
         <button
-          className="lg:hidden flex flex-col gap-1.5 z-50 p-2"
+          className="xl:hidden flex flex-col gap-1.5 z-50 p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="メニューを開く"
         >
@@ -74,7 +75,7 @@ export default function Header() {
       </div>
 
       {/* モバイルメニューオーバーレイ */}
-      <div className={`fixed inset-0 bg-black transition-all duration-500 ease-in-out lg:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 bg-black transition-all duration-500 ease-in-out xl:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="flex flex-col h-full pt-32 px-10 pb-10 overflow-y-auto">
           <div className="flex flex-col gap-6">
             {navItems.map((item) => (

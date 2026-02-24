@@ -12,6 +12,7 @@ const navItems = [
   { name: 'お知らせ', en: 'NEWS', href: '/news' },
   { name: 'スケジュール', en: 'SCHEDULE', href: '/schedule' },
   { name: 'インストラクター', en: 'INSTRUCTORS', href: '/instructors' },
+  { name: 'ショップ情報', en: 'SHOP INFO', href: '/shop' },
   { name: 'アクセス', en: 'ACCESS', href: '/access' },
   { name: '問合せ', en: 'CONTACT', href: '/contact' },
 ];

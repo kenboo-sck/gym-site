@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export',  ← コメントアウト
+  output: 'export',
   images: {
-    // Vercel等のサーバー環境では最適化を有効に
-    unoptimized: false,
+    // Python等の静的サーバーでは画像の最適化機能が使えないため、無効化する必要があります
+    unoptimized: true,
     // デバイスサイズに応じた画像サイズを生成
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -25,7 +25,7 @@ const nextConfig = {
       },
     ],
   },
-  // trailingSlash: true,  ← コメントアウト
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
