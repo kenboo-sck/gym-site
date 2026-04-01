@@ -4,14 +4,14 @@ import { NextRequest, NextResponse } from 'next/server';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface ContactFormData {
-    subject: string;
-    experience: string;
+    subject?: string;
+    experience?: string;
     contactMethod: string;
     gender: string;
     name: string;
     email: string;
     phone: string;
-    address: string;
+    address?: string;
     message: string;
 }
 
@@ -29,8 +29,8 @@ export async function POST(request: NextRequest) {
         }
 
         // 管理者への通知メール
-        await resend.emails.send({
-            from: 'AFG 大阪本町 お問い合わせ <noreply@resend.dev>',
+        const { data, error } = await resend.emails.send({
+            from: 'AFG 大阪本町 <onboarding@resend.dev>',
             to: adminEmails,
             subject: `【ALMA FIGHT GYM 大阪本町】お問い合わせ - ${formData.name}様`,
             html: `
@@ -43,11 +43,11 @@ export async function POST(request: NextRequest) {
                         <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
                             <tr style="border-bottom: 1px solid #eee;">
                                 <td style="padding: 12px; background: #f8f8f8; width: 140px; font-weight: bold;">項目</td>
-                                <td style="padding: 12px;">${formData.subject}</td>
+                                <td style="padding: 12px;">${formData.subject || '（なし）'}</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #eee;">
                                 <td style="padding: 12px; background: #f8f8f8; font-weight: bold;">柔術経験</td>
-                                <td style="padding: 12px;">${formData.experience}</td>
+                                <td style="padding: 12px;">${formData.experience || '（なし）'}</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #eee;">
                                 <td style="padding: 12px; background: #f8f8f8; font-weight: bold;">連絡方法</td>
@@ -89,11 +89,16 @@ export async function POST(request: NextRequest) {
             `,
         });
 
-        return NextResponse.json({ success: true });
-    } catch (error) {
+        if (error) {
+            console.error('Resend API Error:', error);
+            throw new Error(error.message);
+        }
+
+        return NextResponse.json({ success: true, id: data?.id });
+    } catch (error: any) {
         console.error('メール送信エラー:', error);
         return NextResponse.json(
-            { success: false, error: 'メール送信に失敗しました' },
+            { success: false, error: error.message || 'メール送信に失敗しました' },
             { status: 500 }
         );
     }

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export', // お問い合わせフォームのAPI (reCAPTCHA/Email) を使用する場合、静的エクスポートは無効にする必要があります
   images: {
     // Python等の静的サーバーでは画像の最適化機能が使えないため、無効化する必要があります
     unoptimized: true,

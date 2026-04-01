@@ -41,10 +41,10 @@ export default function MembershipContent() {
 
                     <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
                         <div className="inline-block bg-orange-600 text-white px-3 py-1 text-[10px] font-bold italic uppercase tracking-widest mb-6">
-                            Grand Opening Campaign
+                            New Life Support Campaign
                         </div>
                         <h2 className="text-4xl md:text-6xl font-black italic uppercase mb-8 tracking-tighter leading-none">
-                            <span className="text-orange-600">OPENING</span><br />CAMPAIGN
+                            <span className="text-orange-600">NEW LIFE</span><br />SUPPORT
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
@@ -54,20 +54,21 @@ export default function MembershipContent() {
                             </div>
                             <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6">
                                 <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest mb-1">Benefit 02</p>
-                                <p className="text-xl font-black italic">道着プレゼント</p>
+                                <p className="text-xl font-black italic">月会費 1ヶ月無料</p>
                             </div>
-                            <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6">
-                                <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest mb-1">Benefit 03</p>
-                                <p className="text-xl font-black italic">月会費 2ヶ月無料</p>
+                            <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:col-span-1">
+                                <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest mb-1">Period</p>
+                                <p className="text-xl font-black italic">2026年5月末まで</p>
                             </div>
                         </div>
 
                         <div className="mb-10">
-                            <p className="text-2xl md:text-3xl font-black italic text-white mb-2">
-                                先着 <span className="text-orange-600 underline decoration-white underline-offset-4">30名様</span> 限定
+                            <p className="text-2xl md:text-3xl font-black italic text-white mb-2 underline decoration-white underline-offset-4 decoration-orange-600">
+                                期間限定キャンペーン実施中
                             </p>
                             <p className="font-sans text-gray-400 max-w-xl leading-relaxed text-sm md:text-base">
-                                豪華特典をご用意しました。定員に達し次第終了となります。<br />
+                                春の新生活に格闘技を。お得に始められる特典をご用意しました。<br />
+                                定員に達し次第、期間内でも終了する場合がございます。<br />
                                 <span className="text-[10px] text-gray-500 mt-1 block uppercase tracking-wider">※キャンペーンの適用には6ヶ月間の継続利用が条件となります。6か月以内に解約の場合は実費請求となります。</span>
                             </p>
                         </div>

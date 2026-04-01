@@ -134,7 +134,7 @@ export default function InstructorsContent() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         <div className="absolute bottom-8 left-8 text-white">
                             <p className="text-orange-500 font-bold tracking-widest uppercase text-sm mb-2">Instructor</p>
-                            <h2 className="text-5xl font-black italic uppercase tracking-tighter">Kenta Hayami</h2>
+                            <h2 className="text-5xl font-black italic uppercase tracking-tighter">Kenta Hayamizu</h2>
                         </div>
                     </div>
 

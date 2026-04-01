@@ -90,31 +90,29 @@ export default function HomeContent() {
                     {/* Grand Open Campaign Badge */}
                     <div className="mt-6 md:mt-10 w-full max-w-5xl mx-auto bg-black/80 backdrop-blur-md border border-orange-600/50 p-6 md:p-8 shadow-2xl relative overflow-hidden group rounded-sm">
                         <div className="absolute top-0 right-0 bg-gradient-to-l from-orange-600 to-red-600 text-white px-4 py-1 text-[10px] md:text-xs font-black italic tracking-tighter uppercase shadow-lg animate-pulse">
-                            GRAND OPENING
+                            CAMPAIGN
                         </div>
 
                         <div className="relative z-10">
                             {/* Headline */}
                             <h2 className="text-3xl md:text-5xl font-black italic text-white mb-6 tracking-tighter text-center leading-tight">
-                                <span className="text-orange-500 mr-2">2026年2月16日</span>グランドオープン
+                                <span className="text-orange-500 mr-2 uppercase">New Life Support</span>キャンペーン
                             </h2>
 
                             {/* Campaign Text */}
                             {/* Campaign Text */}
                             <div className="bg-white/5 border border-white/10 p-4 md:p-6 mb-6 rounded text-center">
                                 <p className="text-white text-sm md:text-xl font-bold leading-loose flex flex-col md:flex-row items-center justify-center gap-2 md:gap-0 flex-wrap">
-                                    <span>オープン記念イベントとして</span>
+                                    <span>2026年5月末までの期間限定</span>
                                     <span className="hidden md:inline mx-2"> </span>
                                     <div className="flex flex-col md:flex-row items-center gap-2">
                                         <span className="text-orange-500 text-lg md:text-2xl italic">入会金無料</span>
                                         <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-                                        <span className="text-orange-500 text-lg md:text-2xl italic">道着プレゼント</span>
-                                        <svg className="w-4 h-4 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-                                        <span className="text-orange-500 text-lg md:text-2xl italic">月会費2ヶ月無料</span>
+                                        <span className="text-orange-500 text-lg md:text-2xl italic">月会費 1ヶ月無料</span>
                                     </div>
                                     <span className="hidden md:inline mx-2"> </span>
                                     <span className="flex items-center gap-1">
-                                        の大キャンペーンをご用意
+                                        の特別キャンペーンを実施中
                                         <svg className="w-5 h-5 text-orange-500 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" /></svg>
                                     </span>
                                 </p>

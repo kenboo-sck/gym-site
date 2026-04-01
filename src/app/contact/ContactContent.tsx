@@ -114,6 +114,11 @@ function ContactFormContent() {
                 body: JSON.stringify({ token: recaptchaToken }),
             });
 
+            if (!verifyResponse.ok) {
+                const errorText = await verifyResponse.text();
+                throw new Error(`サーバーエラー (${verifyResponse.status}): ${errorText.substring(0, 50)}...`);
+            }
+
             const verifyResult = await verifyResponse.json();
 
             if (!verifyResult.success) {
@@ -143,7 +148,7 @@ function ContactFormContent() {
 
             // 5. メール送信（お礼メール + 管理者通知）
             try {
-                await fetch('/api/send-email', {
+                const sendEmailResponse = await fetch('/api/send-email', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -157,17 +162,24 @@ function ContactFormContent() {
                         message: formData.message,
                     }),
                 });
-            } catch (emailError) {
+
+                if (!sendEmailResponse.ok) {
+                    const errorData = await sendEmailResponse.json();
+                    throw new Error(`メール送信APIエラー (${sendEmailResponse.status}): ${errorData.error || '不明なエラー'}`);
+                }
+            } catch (emailError: any) {
                 console.error('メール送信エラー:', emailError);
-                // メール送信に失敗してもFirebase保存は成功しているので続行
+                // メール送信に失敗した場合、上位の catch にエラーを投げる
+                throw new Error(emailError.message || 'メールの送信中にエラーが発生しました');
             }
 
             // 送信完了画面を表示
             setIsCompleted(true);
             window.scrollTo(0, 0);
-        } catch (error) {
+        } catch (error: any) {
             console.error("送信エラー:", error);
-            alert("送信に失敗しました。もう一度お試しください。");
+            const errorMessage = error?.message || "不明なエラー";
+            alert(`送信に失敗しました。もう一度お試しください。\nエラー内容: ${errorMessage}`);
         } finally {
             setIsSubmitting(false);
         }
