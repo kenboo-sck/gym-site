@@ -64,7 +64,7 @@ export default function NewsDetailPage() {
           font-weight: bold;
           margin: 2rem 0 1rem;
           padding-bottom: 0.5rem;
-          border-bottom: 2px solid #1d4ed8;
+          border-bottom: 2px solid #ea580c;
         }
         @media (min-width: 768px) {
           .article-content h2 {
@@ -99,7 +99,7 @@ export default function NewsDetailPage() {
           padding-left: 0.5rem;
         }
         .article-content blockquote {
-          border-left: 4px solid #1d4ed8;
+          border-left: 4px solid #ea580c;
           padding-left: 1.5rem;
           margin: 1.5rem 0;
           font-style: italic;
@@ -117,7 +117,7 @@ export default function NewsDetailPage() {
           font-style: italic;
         }
         .article-content a {
-          color: #1d4ed8;
+          color: #ea580c;
           text-decoration: underline;
         }
       `}</style>
