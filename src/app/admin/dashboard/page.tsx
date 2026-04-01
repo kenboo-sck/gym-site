@@ -224,7 +224,7 @@ export default function AdminDashboard() {
   const [dayOfWeek, setDayOfWeek] = useState(0);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [color, setColor] = useState("#ea580c");
+  const [color, setColor] = useState("#1d4ed8");
   const [status, setStatus] = useState("OPEN");
   const [loading, setLoading] = useState(false);
   const [schedules, setSchedules] = useState<any[]>([]);
@@ -327,7 +327,7 @@ export default function AdminDashboard() {
       setDayOfWeek(0);
       setStartTime("");
       setEndTime("");
-      setColor("#ea580c");
+      setColor("#1d4ed8");
       setStatus("OPEN");
       fetchSchedules();
     } catch (error) {
@@ -345,7 +345,7 @@ export default function AdminDashboard() {
     setDayOfWeek(0);
     setStartTime("");
     setEndTime("");
-    setColor("#ea580c");
+    setColor("#1d4ed8");
     setStatus("OPEN");
   };
 

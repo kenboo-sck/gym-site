@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaInstagram, FaFacebookF, FaXTwitter, FaGlobe } from 'react-icons/fa6';
+import { FaInstagram, FaFacebookF, FaXTwitter } from 'react-icons/fa6';
 
 const navItems = [
   { name: '初めての方へ', en: 'BEGINNERS', href: '/beginners' },
@@ -12,6 +12,7 @@ const navItems = [
   { name: 'お知らせ', en: 'NEWS', href: '/news' },
   { name: 'スケジュール', en: 'SCHEDULE', href: '/schedule' },
   { name: 'インストラクター', en: 'INSTRUCTORS', href: '/instructors' },
+  { name: 'ショップ情報', en: 'SHOP INFO', href: '/shop' },
   { name: 'アクセス', en: 'ACCESS', href: '/access' },
   { name: '問合せ', en: 'CONTACT', href: '/contact' },
 ];
@@ -19,7 +20,6 @@ const navItems = [
 const socialLinks = [
   { name: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/afg_osaka_honmachi', color: 'hover:text-pink-500' },
   { name: 'X', icon: FaXTwitter, href: 'https://x.com/afg_osaka', color: 'hover:text-white' },
-  { name: 'Blog', icon: FaGlobe, href: 'https://almafightgym-osaka.doorblog.jp/', color: 'hover:text-orange-400' },
 ];
 
 export default function Footer() {

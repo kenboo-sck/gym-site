@@ -123,19 +123,6 @@ export default function HomeContent() {
                                 </p>
                             </div>
 
-                            {/* Pre-open Section */}
-                            <div className="bg-orange-900/30 border border-orange-500/30 p-4 rounded text-center">
-                                <h3 className="text-orange-400 font-bold text-base md:text-xl italic mb-2 uppercase tracking-wider flex items-center justify-center gap-2">
-                                    <span className="w-8 h-px bg-orange-400/50"></span>
-                                    PRE-OPEN: 2.9 - 2.13
-                                    <span className="w-8 h-px bg-orange-400/50"></span>
-                                </h3>
-                                <p className="text-sm md:text-base text-gray-200 font-medium leading-relaxed">
-                                    また2月9日〜13日はプレオープン期間として<br className="md:hidden" />
-                                    特別スケジュール、出稽古無料、<br className="hidden md:block" />
-                                    初めての方へ無料体験会も予定しております。
-                                </p>
-                            </div>
                         </div>
                     </div>
 
@@ -480,7 +467,7 @@ export default function HomeContent() {
                                 href={`/news/${item.id}`}
                                 className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1"
                             >
-                                <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
+                                <div className="relative w-full aspect-video bg-gray-100 overflow-hidden">
                                     {(item.image || item.imageUrl || item.thumbnail) ? (
                                         <Image
                                             src={item.image || item.imageUrl || item.thumbnail}

@@ -6,18 +6,12 @@ import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recapt
 
 // 型定義を明示的に追加
 interface FormData {
-    subject: string;
-    experience: string;
     contactMethod: string;
     gender: string;
     name: string;
     email: string;
     emailConfirm: string;
     phone: string;
-    zip: string;
-    prefecture: string;
-    city: string;
-    address: string;
     message: string;
     // ハニーポットフィールド（スパム対策）
     website: string;
@@ -29,18 +23,12 @@ function ContactFormContent() {
 
     // 初期値の定義(型を明示)
     const [formData, setFormData] = useState<FormData>({
-        subject: '無料体験申込み',
-        experience: '無し',
         contactMethod: 'メール',
         gender: '回答しない',
         name: '',
         email: '',
         emailConfirm: '',
         phone: '',
-        zip: '',
-        prefecture: '',
-        city: '',
-        address: '',
         message: '',
         website: '' // ハニーポット（人間は入力しない）
     });
@@ -53,26 +41,7 @@ function ContactFormContent() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);
 
-    // 郵便番号から住所を検索する関数
-    const fetchAddress = async (zipCode: string) => {
-        if (zipCode.length === 7) {
-            try {
-                const res = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipCode}`);
-                const data = await res.json();
-                if (data.status === 200 && data.results) {
-                    const result = data.results[0];
-                    setFormData(prev => ({
-                        ...prev,
-                        prefecture: result.address1,
-                        city: result.address2,
-                        address: result.address3
-                    }));
-                }
-            } catch (error) {
-                console.error("住所の取得に失敗しました", error);
-            }
-        }
-    };
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -89,13 +58,7 @@ function ContactFormContent() {
         }
     };
 
-    const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value.replace(/[^\d]/g, '');
-        setFormData(prev => ({ ...prev, zip: value }));
-        if (value.length === 7) {
-            fetchAddress(value);
-        }
-    };
+
 
     const handleConfirm = (e: React.FormEvent) => {
         e.preventDefault();
@@ -167,18 +130,12 @@ function ContactFormContent() {
             }
 
             // 4. Firebaseに保存
-            const fullAddress = `〒${formData.zip} ${formData.prefecture}${formData.city}${formData.address}`;
-
             await addDoc(collection(db, "inquiries"), {
-                subject: formData.subject,
-                experience: formData.experience,
                 contactMethod: formData.contactMethod,
                 gender: formData.gender,
                 name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
-                zip: formData.zip,
-                address: fullAddress,
                 message: formData.message,
                 recaptchaScore: verifyResult.score, // スコアも保存
                 createdAt: serverTimestamp(),
@@ -192,14 +149,11 @@ function ContactFormContent() {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        subject: formData.subject,
-                        experience: formData.experience,
                         contactMethod: formData.contactMethod,
                         gender: formData.gender,
                         name: formData.name,
                         email: formData.email,
                         phone: formData.phone,
-                        address: fullAddress,
                         message: formData.message,
                     }),
                 });
@@ -261,10 +215,6 @@ function ContactFormContent() {
                                 </div>
                                 <div className="p-6 space-y-4 text-sm">
                                     <div className="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-3">
-                                        <span className="text-gray-500 font-bold w-32 mb-1 md:mb-0">項目</span>
-                                        <span className="text-gray-900">{formData.subject}</span>
-                                    </div>
-                                    <div className="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-3">
                                         <span className="text-gray-500 font-bold w-32 mb-1 md:mb-0">お名前</span>
                                         <span className="text-gray-900 font-bold">{formData.name}</span>
                                     </div>
@@ -281,12 +231,8 @@ function ContactFormContent() {
                                         <span className="text-gray-900">{formData.contactMethod}</span>
                                     </div>
                                     <div className="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-3">
-                                        <span className="text-gray-500 font-bold w-32 mb-1 md:mb-0">柔術経験</span>
-                                        <span className="text-gray-900">{formData.experience}</span>
-                                    </div>
-                                    <div className="flex flex-col md:flex-row md:items-center border-b border-gray-100 pb-3">
-                                        <span className="text-gray-500 font-bold w-32 mb-1 md:mb-0">住所</span>
-                                        <span className="text-gray-900">〒{formData.zip} {formData.prefecture}{formData.city}{formData.address}</span>
+                                        <span className="text-gray-500 font-bold w-32 mb-1 md:mb-0">性別</span>
+                                        <span className="text-gray-900">{formData.gender}</span>
                                     </div>
                                     {formData.message && (
                                         <div className="flex flex-col pt-2">
@@ -342,31 +288,11 @@ function ContactFormContent() {
                                 <form onSubmit={handleConfirm} className="p-10 space-y-10">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                         <div className="space-y-4">
-                                            <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Subject / 項目 <span className="text-orange-600">＊</span></label>
-                                            <div className="flex flex-wrap gap-4 text-sm font-bold italic">
-                                                {["無料体験申込み", "入会希望", "その他"].map((item) => (
-                                                    <label key={item} className="flex items-center gap-2 cursor-pointer hover:text-orange-600">
-                                                        <input type="radio" name="subject" value={item} checked={formData.subject === item} onChange={handleChange} className="accent-orange-600" /> {item}
-                                                    </label>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        <div className="space-y-4">
                                             <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Contact Method / ご希望の連絡方法 <span className="text-orange-600">＊</span></label>
                                             <div className="flex gap-6 text-sm font-bold italic">
                                                 {["メール", "電話"].map((method) => (
                                                     <label key={method} className="flex items-center gap-2 cursor-pointer hover:text-orange-600">
                                                         <input type="radio" name="contactMethod" value={method} checked={formData.contactMethod === method} onChange={handleChange} className="accent-orange-600" /> {method}
-                                                    </label>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        <div className="space-y-4">
-                                            <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Experience / 柔術の経験</label>
-                                            <div className="flex gap-6 text-sm font-bold italic">
-                                                {["有り", "無し"].map((exp) => (
-                                                    <label key={exp} className="flex items-center gap-2 cursor-pointer hover:text-orange-600">
-                                                        <input type="radio" name="experience" value={exp} checked={formData.experience === exp} onChange={handleChange} className="accent-orange-600" /> {exp}
                                                     </label>
                                                 ))}
                                             </div>
@@ -406,29 +332,7 @@ function ContactFormContent() {
                                         </div>
                                     </div>
 
-                                    <div className="space-y-6">
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                            <div className="space-y-2">
-                                                <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Zip Code / 郵便番号</label>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="font-bold">〒</span>
-                                                    <input type="text" name="zip" value={formData.zip} onChange={handleZipChange} placeholder="1234567" maxLength={7} className="w-full border-2 border-gray-100 p-4 focus:border-orange-600 outline-none" />
-                                                </div>
-                                            </div>
-                                            <div className="space-y-2">
-                                                <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Prefecture / 都道府県</label>
-                                                <input type="text" name="prefecture" value={formData.prefecture} onChange={handleChange} className="w-full border-2 border-gray-100 p-4 focus:border-orange-600 outline-none" />
-                                            </div>
-                                            <div className="space-y-2">
-                                                <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">City / 市区町村</label>
-                                                <input type="text" name="city" value={formData.city} onChange={handleChange} className="w-full border-2 border-gray-100 p-4 focus:border-orange-600 outline-none" />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Address / 番地・建物名</label>
-                                            <input type="text" name="address" value={formData.address} onChange={handleChange} className="w-full border-2 border-gray-100 p-4 focus:border-orange-600 outline-none" />
-                                        </div>
-                                    </div>
+
 
                                     <div className="space-y-2">
                                         <label className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 block">Message / お問い合わせ内容</label>
@@ -469,14 +373,11 @@ function ContactFormContent() {
                                 <div className="p-10 space-y-8">
                                     <div className="grid grid-cols-1 gap-6 border-b border-gray-100 pb-8">
                                         {[
-                                            { label: "項目", value: formData.subject },
-                                            { label: "連絡方法", value: formData.contactMethod },
-                                            { label: "柔術経験", value: formData.experience },
-                                            { label: "性別", value: formData.gender },
                                             { label: "お名前", value: formData.name },
-                                            { label: "電話番号", value: formData.phone || "未入力" },
                                             { label: "メールアドレス", value: formData.email },
-                                            { label: "住所", value: `〒${formData.zip} ${formData.prefecture}${formData.city}${formData.address}` },
+                                            { label: "電話番号", value: formData.phone || "未入力" },
+                                            { label: "連絡方法", value: formData.contactMethod },
+                                            { label: "性別", value: formData.gender },
                                         ].map((item) => (
                                             <div key={item.label} className="flex flex-col md:flex-row md:items-center border-b border-gray-50 py-2">
                                                 <span className="text-[10px] font-black italic uppercase tracking-widest text-gray-400 w-40">{item.label}</span>

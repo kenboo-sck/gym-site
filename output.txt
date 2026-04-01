@@ -1,0 +1,32 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   src/app/HomeContent.tsx
+	modified:   src/app/admin/dashboard/page.tsx
+	modified:   src/app/contact/ContactContent.tsx
+	modified:   src/app/globals.css
+	modified:   src/app/instructors/InstructorsContent.tsx
+	modified:   src/app/membership/MembershipContent.tsx
+	modified:   src/app/news/NewsListContent.tsx
+	modified:   src/app/schedule/ScheduleContent.tsx
+	modified:   src/components/Footer.tsx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	output.txt
+	public/202603-1.jpg
+	"src/app/HomeContent (Sputnikworks \343\201\256\347\253\266\345\220\210\343\202\263\343\203\224\343\203\274 2026-02-25).tsx"
+	src/app/admin/edit/[id]/EditNewsPage.tsx
+	"src/app/admin/edit/[id]/page (Sputnikworks \343\201\256\347\253\266\345\220\210\343\202\263\343\203\224\343\203\274 2026-02-25).tsx"
+	src/app/news/[id]/NewsDetailPage.tsx
+	"src/app/news/[id]/page (Sputnikworks \343\201\256\347\253\266\345\220\210\343\202\263\343\203\224\343\203\274 2026-02-25).tsx"
+	src/app/privacy/
+	src/app/shop/
+	src/app/terms/
+	"src/components/Footer (Sputnikworks \343\201\256\347\253\266\345\220\210\343\202\263\343\203\224\343\203\274 2026-02-25).tsx"
+	"src/components/Header (Sputnikworks \343\201\256\347\253\266\345\220\210\343\202\263\343\203\224\343\203\274 2026-02-25).tsx"
+
+no changes added to commit (use "git add" and/or "git commit -a")

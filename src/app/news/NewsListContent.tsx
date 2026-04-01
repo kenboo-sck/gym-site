@@ -65,7 +65,7 @@ export default function NewsContent() {
                             href={`/news/${item.id}`}
                             className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1"
                         >
-                            <div className="relative w-full aspect-video bg-gray-100 overflow-hidden">
+                            <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
                                 {(item.image || item.imageUrl || item.thumbnail) ? (
                                     <Image
                                         src={item.image || item.imageUrl || item.thumbnail}

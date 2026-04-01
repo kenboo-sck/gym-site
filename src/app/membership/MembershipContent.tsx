@@ -139,8 +139,8 @@ export default function MembershipContent() {
                         <div className="group bg-white p-8 border-l-4 border-gray-200 hover:border-orange-600 transition-all duration-300 shadow-lg hover:shadow-2xl">
                             <div className="mb-6">
                                 <span className="text-[10px] text-gray-400 font-bold tracking-widest uppercase">Monthly</span>
-                                <h3 className="text-2xl font-black italic uppercase text-gray-900 mt-1">Adult 8 Times</h3>
-                                <p className="text-gray-400 text-sm font-bold mt-1">大人（月8回）</p>
+                                <h3 className="text-2xl font-black italic uppercase text-gray-900 mt-1">Adult 8 Days</h3>
+                                <p className="text-gray-400 text-sm font-bold mt-1">大人（月８日）</p>
                             </div>
                             <div className="flex items-baseline gap-2 mb-4">
                                 <span className="text-5xl font-black italic text-gray-900 group-hover:text-orange-600 transition-colors">¥12,100</span>
@@ -265,14 +265,38 @@ export default function MembershipContent() {
                         <div className="group bg-white p-8 border-l-4 border-gray-200 hover:border-orange-600 transition-all duration-300 shadow-lg hover:shadow-2xl">
                             <div className="mb-6">
                                 <span className="text-[10px] text-gray-400 font-bold tracking-widest uppercase">Per Hour</span>
-                                <h3 className="text-2xl font-black italic uppercase text-gray-900 mt-1">Private Lesson</h3>
-                                <p className="text-gray-400 text-sm font-bold mt-1">プライベートレッスン</p>
+                                <h3 className="text-2xl font-black italic uppercase text-gray-900 mt-1">Personal Lesson</h3>
+                                <p className="text-gray-400 text-sm font-bold mt-1">パーソナルレッスン</p>
                             </div>
                             <div className="flex items-baseline gap-2 mb-4">
                                 <span className="text-5xl font-black italic text-gray-900 group-hover:text-orange-600 transition-colors">¥11,000</span>
                                 <span className="text-gray-400 text-xs font-bold">/ hour (税込)</span>
                             </div>
                             <div className="space-y-1 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
+                                <p className="flex items-center gap-2">
+                                    <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    シャワー利用可能
+                                </p>
+                                <p className="text-[10px] text-gray-400 mt-2 font-bold font-sans">※1名の料金です。2名以上のグループレッスンは要問合せ。</p>
+                            </div>
+                        </div>
+
+                        {/* パーソナルレッスン回数券 */}
+                        <div className="group bg-white p-8 border-l-4 border-gray-200 hover:border-orange-600 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                            <div className="mb-6">
+                                <span className="text-[10px] text-gray-400 font-bold tracking-widest uppercase">Tickets</span>
+                                <h3 className="text-2xl font-black italic uppercase text-gray-900 mt-1">Personal Lesson Ticket</h3>
+                                <p className="text-gray-400 text-sm font-bold mt-1">パーソナルレッスン回数券（11回）</p>
+                            </div>
+                            <div className="flex items-baseline gap-2 mb-4">
+                                <span className="text-5xl font-black italic text-gray-900 group-hover:text-orange-600 transition-colors">¥110,000</span>
+                                <span className="text-gray-400 text-xs font-bold">(税込)</span>
+                            </div>
+                            <div className="space-y-1 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
+                                <p className="flex items-center gap-2">
+                                    <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    1回分お得
+                                </p>
                                 <p className="flex items-center gap-2">
                                     <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                                     シャワー利用可能
@@ -305,6 +329,28 @@ export default function MembershipContent() {
                                     クラス参加不可
                                 </p>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* レンタル料金 */}
+                    <div className="mt-16">
+                        <div className="mb-8">
+                            <h3 className="text-2xl font-black italic uppercase text-gray-900 border-l-4 border-orange-600 pl-4">Rental Fees</h3>
+                            <p className="text-gray-400 text-sm font-bold mt-1 pl-5">レンタル料金</p>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {[
+                                { name: "道着", price: "¥1,100" },
+                                { name: "キックボクシング用具", price: "¥1,100" },
+                                { name: "ウェア上下", price: "¥1,100" },
+                                { name: "タオル", price: "¥110" }
+                            ].map((item) => (
+                                <div key={item.name} className="bg-white p-6 border border-gray-100 shadow-md">
+                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-2">{item.name}</p>
+                                    <p className="text-2xl font-black italic text-gray-900">{item.price}</p>
+                                    <p className="text-[10px] text-gray-400 font-bold mt-1">(税込)</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

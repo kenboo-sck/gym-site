@@ -110,10 +110,10 @@ export default function ScheduleContent() {
                                         daySchedules.map(item => (
                                             <div
                                                 key={item.id}
-                                                style={{ borderLeftColor: item.color || '#ea580c' }}
+                                                style={{ borderLeftColor: item.color || '#1d4ed8' }}
                                                 className="bg-white border-l-4 p-3 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
                                             >
-                                                <div style={{ color: item.color || '#ea580c' }} className="font-black text-[15px] leading-tight mb-1">
+                                                <div style={{ color: item.color || '#1d4ed8' }} className="font-black text-[15px] leading-tight mb-1">
                                                     {item.startTime}-{item.endTime}
                                                 </div>
                                                 <div className="font-black text-[13px] leading-tight mb-2 uppercase italic">
@@ -154,9 +154,9 @@ export default function ScheduleContent() {
                                 {daySchedules.length > 0 ? (
                                     daySchedules.map(item => (
                                         <div key={item.id} className="relative p-6 bg-white border border-gray-100 shadow-xl overflow-hidden">
-                                            <div style={{ backgroundColor: item.color || '#ea580c' }} className="absolute top-0 left-0 w-2 h-full"></div>
+                                            <div style={{ backgroundColor: item.color || '#1d4ed8' }} className="absolute top-0 left-0 w-2 h-full"></div>
                                             <div className="flex justify-between items-start mb-2">
-                                                <div className="text-3xl font-black italic leading-none" style={{ color: item.color || '#ea580c' }}>
+                                                <div className="text-3xl font-black italic leading-none" style={{ color: item.color || '#1d4ed8' }}>
                                                     {item.startTime}-{item.endTime}
                                                 </div>
                                                 <span className="bg-black text-white text-[9px] px-3 py-1 font-black italic uppercase tracking-tighter">
@@ -205,14 +205,14 @@ export default function ScheduleContent() {
                                 {/* ホバー時のアクセントグラデーション */}
                                 <div
                                     className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none"
-                                    style={{ background: `radial-gradient(circle at top right, ${cls.color || '#ea580c'}, transparent)` }}
+                                    style={{ background: `radial-gradient(circle at top right, ${cls.color || '#1d4ed8'}, transparent)` }}
                                 />
 
                                 <div className="relative z-10">
                                     <div className="flex items-center gap-4 mb-4">
                                         <div
                                             className="w-4 h-4 group-hover:scale-125 transition-transform duration-300"
-                                            style={{ backgroundColor: cls.color || '#ea580c' }}
+                                            style={{ backgroundColor: cls.color || '#1d4ed8' }}
                                         />
                                         <h3 className="text-2xl font-black italic uppercase tracking-tight">{cls.title}</h3>
                                     </div>
@@ -243,7 +243,7 @@ export default function ScheduleContent() {
                     <div className="relative bg-white w-full max-w-2xl max-h-[90vh] shadow-2xl overflow-y-auto animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
                         {/* ヘッダー */}
                         <div className="p-8 pb-0 flex justify-between items-start">
-                            <div className="border-l-8 pl-4" style={{ borderLeftColor: selectedClass.color || '#ea580c' }}>
+                            <div className="border-l-8 pl-4" style={{ borderLeftColor: selectedClass.color || '#1d4ed8' }}>
                                 <h3 className="text-3xl font-black italic uppercase tracking-tighter leading-none">
                                     {selectedClass.title}
                                 </h3>
