@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 
         // 管理者への通知メール
         const { data, error } = await resend.emails.send({
-            from: 'AFG 大阪本町 <onboarding@resend.dev>',
+            from: 'AFG 大阪本町 <afg-osaka@mwjapan.jp>',
             to: adminEmails,
             subject: `【ALMA FIGHT GYM 大阪本町】お問い合わせ - ${formData.name}様`,
             html: `
