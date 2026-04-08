@@ -42,15 +42,7 @@ export async function POST(request: NextRequest) {
                     <div style="padding: 30px; background: #fff; border: 1px solid #eee;">
                         <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
                             <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 12px; background: #f8f8f8; width: 140px; font-weight: bold;">項目</td>
-                                <td style="padding: 12px;">${formData.subject || '（なし）'}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 12px; background: #f8f8f8; font-weight: bold;">柔術経験</td>
-                                <td style="padding: 12px;">${formData.experience || '（なし）'}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 12px; background: #f8f8f8; font-weight: bold;">連絡方法</td>
+                                <td style="padding: 12px; background: #f8f8f8; width: 140px; font-weight: bold;">連絡方法</td>
                                 <td style="padding: 12px;">${formData.contactMethod}</td>
                             </tr>
                             <tr style="border-bottom: 1px solid #eee;">
@@ -68,10 +60,6 @@ export async function POST(request: NextRequest) {
                             <tr style="border-bottom: 1px solid #eee;">
                                 <td style="padding: 12px; background: #f8f8f8; font-weight: bold;">電話番号</td>
                                 <td style="padding: 12px;">${formData.phone || '未入力'}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #eee;">
-                                <td style="padding: 12px; background: #f8f8f8; font-weight: bold;">住所</td>
-                                <td style="padding: 12px;">${formData.address || '未入力'}</td>
                             </tr>
                             <tr>
                                 <td style="padding: 12px; background: #f8f8f8; font-weight: bold; vertical-align: top;">お問い合わせ内容</td>
