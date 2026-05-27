@@ -103,7 +103,7 @@ export default function HomeContent() {
                             {/* Campaign Text */}
                             <div className="bg-white/5 border border-white/10 p-4 md:p-6 mb-6 rounded text-center">
                                 <p className="text-white text-sm md:text-xl font-bold leading-loose flex flex-col md:flex-row items-center justify-center gap-2 md:gap-0 flex-wrap">
-                                    <span>2026年5月末までの期間限定</span>
+                                    <span>2026年6月末までの期間限定</span>
                                     <span className="hidden md:inline mx-2"> </span>
                                     <div className="flex flex-col md:flex-row items-center gap-2">
                                         <span className="text-orange-500 text-lg md:text-2xl italic">入会金無料</span>

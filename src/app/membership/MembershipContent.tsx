@@ -58,7 +58,7 @@ export default function MembershipContent() {
                             </div>
                             <div className="bg-white/5 backdrop-blur-md border border-white/10 p-6 md:col-span-1">
                                 <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest mb-1">Period</p>
-                                <p className="text-xl font-black italic">2026年5月末まで</p>
+                                <p className="text-xl font-black italic">2026年6月末まで</p>
                             </div>
                         </div>
 
@@ -328,6 +328,25 @@ export default function MembershipContent() {
                                 <p className="flex items-center gap-2 text-gray-400">
                                     <svg className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                                     クラス参加不可
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* 個人ロッカー */}
+                        <div className="group bg-white p-8 border-l-4 border-gray-200 hover:border-orange-600 transition-all duration-300 shadow-lg hover:shadow-2xl">
+                            <div className="mb-6">
+                                <span className="text-[10px] text-gray-400 font-bold tracking-widest uppercase">Monthly Option</span>
+                                <h3 className="text-2xl font-black italic uppercase text-gray-900 mt-1">Private Locker</h3>
+                                <p className="text-gray-400 text-sm font-bold mt-1">個人ロッカー</p>
+                            </div>
+                            <div className="flex items-baseline gap-2 mb-4">
+                                <span className="text-5xl font-black italic text-gray-900 group-hover:text-orange-600 transition-colors">¥1,100</span>
+                                <span className="text-gray-400 text-xs font-bold">/ month</span>
+                            </div>
+                            <div className="space-y-1 text-xs text-gray-500 font-sans border-t border-gray-100 pt-4">
+                                <p className="flex items-center gap-2">
+                                    <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    月額オプション
                                 </p>
                             </div>
                         </div>
