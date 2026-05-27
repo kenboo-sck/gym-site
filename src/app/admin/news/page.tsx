@@ -9,7 +9,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function AdminNewsPage() {
-  const [user, setUser] = useState<any>(null);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("INFO");
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
@@ -22,11 +21,11 @@ export default function AdminNewsPage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        setAuthLoading(false);
       } else {
         router.push("/admin/login");
+        setAuthLoading(false);
       }
-      setAuthLoading(false);
     });
     return () => unsubscribe();
   }, [router]);
@@ -54,7 +53,7 @@ export default function AdminNewsPage() {
       });
 
       alert("記事を公開しました！");
-      router.push("/news");
+      router.push("/admin/dashboard");
     } catch (error) {
       console.error("Error adding document: ", error);
       alert("エラーが発生しました。");

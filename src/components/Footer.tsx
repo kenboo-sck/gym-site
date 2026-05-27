@@ -3,13 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaInstagram, FaFacebookF, FaXTwitter, FaGlobe } from 'react-icons/fa6';
+import { FaInstagram, FaXTwitter, FaGlobe } from 'react-icons/fa6';
 
 const navItems = [
   { name: '初めての方へ', en: 'BEGINNERS', href: '/beginners' },
   { name: 'クラス紹介', en: 'CLASS', href: '/class' },
   { name: '入会案内', en: 'MEMBERSHIP', href: '/membership' },
-  { name: 'お知らせ', en: 'NEWS', href: '/news' },
   { name: 'スケジュール', en: 'SCHEDULE', href: '/schedule' },
   { name: 'インストラクター', en: 'INSTRUCTORS', href: '/instructors' },
   { name: 'ショップ情報', en: 'SHOP INFO', href: '/shop' },

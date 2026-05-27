@@ -1,36 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "@/lib/firebase";
+import { useState } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HomeContent() {
-    const [newsList, setNewsList] = useState<any[]>([]);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-    useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const q = query(
-                    collection(db, "news"),
-                    where("status", "==", "published")
-                );
-                const querySnapshot = await getDocs(q);
-                const data = querySnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data(),
-                })) as any[];
-                // クライアント側で日付順にソートして最新4件を取得
-                const sortedData = data.sort((a: any, b: any) => (b.date > a.date ? 1 : -1)).slice(0, 4);
-                setNewsList(sortedData);
-            } catch (error) {
-                console.error("Error fetching news:", error);
-            }
-        };
-        fetchNews();
-    }, []);
 
     const features = [
         { title: "Location", desc: "本町駅1番出口より徒歩5分の好立地。仕事帰りや隙間時間にも通いやすい環境です。" },
@@ -439,77 +414,6 @@ export default function HomeContent() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 最新ニュースセクション */}
-            <section className="py-24 bg-gray-50 font-[family-name:var(--font-oswald)]">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="flex justify-between items-end mb-12 border-l-8 border-orange-600 pl-6">
-                        <div>
-                            <h2 className="text-4xl md:text-5xl font-black italic tracking-tighter uppercase leading-none">
-                                Latest News
-                            </h2>
-                            <p className="text-gray-400 font-bold mt-2 tracking-widest uppercase text-sm">最新のお知らせ</p>
-                        </div>
-                        <Link href="/news" className="text-orange-600 font-bold hover:underline italic uppercase tracking-tighter hidden md:block">
-                            View All News →
-                        </Link>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-                        {newsList.map((item) => (
-                            <Link
-                                key={item.id}
-                                href={`/news/${item.id}`}
-                                className="group flex flex-col bg-white border border-gray-100 overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-1"
-                            >
-                                <div className="relative w-full aspect-square bg-gray-100 overflow-hidden">
-                                    {(item.image || item.imageUrl || item.thumbnail) ? (
-                                        <Image
-                                            src={item.image || item.imageUrl || item.thumbnail}
-                                            alt={item.title}
-                                            fill
-                                            loading="lazy"
-                                            sizes="(max-width: 768px) 50vw, 25vw"
-                                            quality={60}
-                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                        />
-                                    ) : (
-                                        <div className="flex items-center justify-center h-full text-gray-300 font-black italic text-xs tracking-widest">NO IMAGE</div>
-                                    )}
-                                </div>
-
-                                <div className="px-2 pt-2 md:px-4 md:pt-4 flex items-center gap-2 md:gap-3">
-                                    <span className="text-gray-400 font-bold text-[10px]">
-                                        {item.date?.seconds
-                                            ? new Date(item.date.seconds * 1000).toLocaleDateString('ja-JP').replace(/\//g, '.')
-                                            : typeof item.date === 'string'
-                                                ? item.date.replace(/-/g, '.')
-                                                : '---'}
-                                    </span>
-                                    <span className="bg-black text-white text-[8px] px-2 py-0.5 font-black italic uppercase tracking-tighter">
-                                        {item.category || "INFO"}
-                                    </span>
-                                </div>
-
-                                <div className="flex-1 p-2 md:p-4">
-                                    <h2 className="text-sm md:text-base font-black italic uppercase group-hover:text-orange-600 transition-colors mb-1 md:mb-2 leading-tight">
-                                        {item.title}
-                                    </h2>
-                                    <p className="text-gray-500 text-[10px] font-bold line-clamp-2 italic">
-                                        {item.content?.replace(/<[^>]*>?/gm, '')}
-                                    </p>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-
-                    <div className="mt-12 text-center md:hidden">
-                        <Link href="/news" className="inline-block bg-black text-white px-8 py-3 font-bold text-sm hover:bg-orange-600 transition-all">
-                            VIEW ALL NEWS
-                        </Link>
                     </div>
                 </div>
             </section>

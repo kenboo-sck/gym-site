@@ -8,7 +8,6 @@ const navItems = [
   { name: '初めての方へ', en: 'BEGINNERS', href: '/beginners' },
   { name: 'クラス紹介', en: 'CLASS', href: '/class' },
   { name: '入会案内', en: 'MEMBERSHIP', href: '/membership' },
-  { name: 'お知らせ', en: 'NEWS', href: '/news' },
   { name: 'スケジュール', en: 'SCHEDULE', href: '/schedule' },
   { name: 'インストラクター', en: 'INSTRUCTORS', href: '/instructors' },
   { name: 'ショップ情報', en: 'SHOP INFO', href: '/shop' },
