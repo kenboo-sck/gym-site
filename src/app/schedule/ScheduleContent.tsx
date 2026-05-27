@@ -90,6 +90,7 @@ export default function ScheduleContent() {
                     <h1 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-none text-gray-900">
                         WEEKLY <span className="text-orange-600">SCHEDULE</span>
                     </h1>
+                    <p className="text-orange-600 font-black italic mt-3 text-xl md:text-2xl tracking-wider">2026年6月〜</p>
                     <p className="text-gray-400 font-bold mt-2 tracking-[0.2em] uppercase">スケジュール</p>
                 </div>
             </section>
