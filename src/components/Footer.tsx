@@ -8,10 +8,12 @@ import { FaInstagram, FaXTwitter, FaGlobe } from 'react-icons/fa6';
 const navItems = [
   { name: '初めての方へ', en: 'BEGINNERS', href: '/beginners' },
   { name: 'クラス紹介', en: 'CLASS', href: '/class' },
-  { name: '入会案内', en: 'MEMBERSHIP', href: '/membership' },
+  { name: '入会案内・料金プラン', en: 'MEMBERSHIP', href: '/membership' },
   { name: 'スケジュール', en: 'SCHEDULE', href: '/schedule' },
   { name: 'インストラクター', en: 'INSTRUCTORS', href: '/instructors' },
   { name: 'ショップ情報', en: 'SHOP INFO', href: '/shop' },
+  { name: 'レンタルスペース', en: 'RENTAL', href: '/rental' },
+  { name: 'よくある質問', en: 'FAQ', href: '/faq' },
   { name: 'アクセス', en: 'ACCESS', href: '/access' },
   { name: '問合せ', en: 'CONTACT', href: '/contact' },
 ];
@@ -68,22 +70,22 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* ナビゲーションリンク - オプション2：区切り線付き */}
+          {/* ナビゲーションリンク */}
           <div className="md:col-span-2">
             <h3 className="text-base font-bold tracking-[0.3em] text-orange-600 uppercase mb-6 italic">
               Navigation
             </h3>
-            <div className="grid grid-cols-2 gap-x-12 gap-y-5">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="group flex flex-col pb-3 border-b border-gray-700 hover:border-orange-600 transition-all"
+                  className="group flex flex-col pb-2 border-b border-gray-700 hover:border-orange-600 transition-all"
                 >
-                  <span className="text-lg font-light italic tracking-wider text-white group-hover:text-orange-600 transition-colors uppercase">
+                  <span className="text-base font-light italic tracking-wider text-white group-hover:text-orange-600 transition-colors uppercase">
                     {item.en}
                   </span>
-                  <span className="text-xs text-gray-400 group-hover:text-orange-400 transition-colors font-sans mt-1">
+                  <span className="text-xs text-gray-400 group-hover:text-orange-400 transition-colors font-sans mt-0.5">
                     {item.name}
                   </span>
                 </Link>
@@ -113,8 +115,8 @@ export default function Footer() {
               <div>
                 <p className="text-xs text-gray-500 uppercase tracking-wider mb-2 font-bold">Hours</p>
                 <p className="text-gray-300 leading-relaxed">
-                  平日 17:00 - 22:00<br />
-                  土曜 10:00 - 14:00<br />
+                  平日 18:00 - 22:00<br />
+                  土曜 11:00 - 13:00<br />
                   <span className="text-gray-500">定休日：日曜・祝日</span><br />
                   <span className="text-[10px] text-gray-500 italic">（夏季、年末年始の長期休暇あり）</span>
                 </p>

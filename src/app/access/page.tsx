@@ -72,11 +72,11 @@ export default function AccessPage() {
               <div className="space-y-4 font-sans">
                 <div className="flex justify-between border-b border-gray-100 pb-2">
                   <span className="font-bold">平日 (Mon-Fri)</span>
-                  <span className="font-black italic">17:00 - 22:00</span>
+                  <span className="font-black italic">18:00 - 22:00</span>
                 </div>
                 <div className="flex justify-between border-b border-gray-100 pb-2">
                   <span className="font-bold">土曜 (Sat)</span>
-                  <span className="font-black italic">10:00 - 14:00</span>
+                  <span className="font-black italic">11:00 - 13:00</span>
                 </div>
                 <div className="flex justify-between text-gray-400">
                   <span className="font-bold">定休日</span>

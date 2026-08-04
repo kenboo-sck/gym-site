@@ -7,10 +7,12 @@ import Image from 'next/image';
 const navItems = [
   { name: '初めての方へ', en: 'BEGINNERS', href: '/beginners' },
   { name: 'クラス紹介', en: 'CLASS', href: '/class' },
-  { name: '入会案内', en: 'MEMBERSHIP', href: '/membership' },
+  { name: '入会案内・料金プラン', en: 'MEMBERSHIP', href: '/membership' },
   { name: 'スケジュール', en: 'SCHEDULE', href: '/schedule' },
   { name: 'インストラクター', en: 'INSTRUCTORS', href: '/instructors' },
   { name: 'ショップ情報', en: 'SHOP INFO', href: '/shop' },
+  { name: 'レンタルスペース', en: 'RENTAL', href: '/rental' },
+  { name: 'よくある質問', en: 'FAQ', href: '/faq' },
   { name: 'アクセス', en: 'ACCESS', href: '/access' },
   { name: '問合せ', en: 'CONTACT', href: '/contact' },
 ];
@@ -34,14 +36,14 @@ export default function Header() {
         </Link>
 
         {/* ナビゲーション */}
-        <nav className="hidden xl:flex gap-8 items-center">
+        <nav className="hidden xl:flex gap-3 2xl:gap-5 items-center">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className="group flex flex-col items-center leading-tight"
             >
-              <span className="font-[family-name:var(--font-oswald)] text-base font-black italic tracking-wider text-gray-900 group-hover:text-orange-600 transition-colors">
+              <span className="font-[family-name:var(--font-oswald)] text-sm 2xl:text-base font-black italic tracking-wider text-gray-900 group-hover:text-orange-600 transition-colors">
                 {item.en}
               </span>
               {/* 日本語：斜体で小さく（下） */}
@@ -55,7 +57,7 @@ export default function Header() {
             href="https://picro.jp/sports/almafight/trials/entry/3284"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 bg-black text-white px-5 py-3 text-sm font-black italic hover:bg-orange-600 transition-all duration-300 shadow-md"
+            className="ml-2 bg-black text-white px-4 py-3 text-xs 2xl:text-sm font-black italic hover:bg-orange-600 transition-all duration-300 shadow-md whitespace-nowrap"
           >
             体験予約
           </a>
