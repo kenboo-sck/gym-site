@@ -378,14 +378,14 @@ export default function MembershipContent() {
                                 <span className="w-6 h-6 bg-orange-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">3</span>
                                 <div>
                                     <p className="font-bold">クレジットカード</p>
-                                    <p className="text-sm text-gray-500">初期費用および月会費のお支払いに必要です。</p>
+                                    <p className="text-sm text-gray-500">初回来館時、初期費用(入会金、初月と2ヶ月目の会費、スポーツ保険)の支払いに必要です。<br />※3ヶ月目以降の会費は皆様銀行口座での引き落としとなります。</p>
                                 </div>
                             </li>
                             <li className="flex items-start gap-4">
                                 <span className="w-6 h-6 bg-orange-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">4</span>
                                 <div>
-                                    <p className="font-bold">銀行口座（キャッシュカード・届出印）</p>
-                                    <p className="text-sm text-gray-500">口座振替による月会費お支払いをご希望の場合にご用意ください。</p>
+                                    <p className="font-bold">銀行口座</p>
+                                    <p className="text-sm text-gray-500">3ヶ月目以降の月会費引き落とし設定用（WEB上で手続きを行います）。</p>
                                 </div>
                             </li>
                         </ul>
